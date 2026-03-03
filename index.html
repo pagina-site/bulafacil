@@ -34,6 +34,7 @@ main{max-width:600px;margin:0 auto;padding:20px 16px}
 .ac-item:last-child{border-bottom:none}
 .ac-item:hover,.ac-item.selected{background:var(--accent-soft)}
 .ac-class{font-size:.7rem;color:var(--muted);font-weight:400;display:block;margin-top:1px}
+.ac-match-hint{font-size:.65rem;color:var(--accent);font-weight:600;margin-left:auto;padding:2px 7px;background:var(--accent-soft);border-radius:10px;flex-shrink:0}
 .doses-wrap{margin-top:12px;display:none}
 .doses-label{font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
 .doses-grid{display:flex;flex-wrap:wrap;gap:8px}
@@ -84,10 +85,7 @@ main{max-width:600px;margin:0 auto;padding:20px 16px}
 .result-section-header{padding:16px 18px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;transition:background .2s}
 .result-section-header:hover{background:var(--surface)}
 .section-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
-.section-icon.red{background:var(--danger-bg)}
-.section-icon.green{background:var(--safe-bg)}
-.section-icon.yellow{background:var(--warn-bg)}
-.section-icon.blue{background:var(--accent-soft)}
+.section-icon.red{background:var(--danger-bg)}.section-icon.green{background:var(--safe-bg)}.section-icon.yellow{background:var(--warn-bg)}.section-icon.blue{background:var(--accent-soft)}
 .section-title{font-weight:700;font-size:.92rem;flex:1}
 .section-arrow{color:var(--muted);font-size:.75rem;transition:transform .2s}
 .result-section.open .section-arrow{transform:rotate(180deg)}
@@ -99,10 +97,7 @@ main{max-width:600px;margin:0 auto;padding:20px 16px}
 .result-content p{margin-bottom:6px}
 .result-content strong{color:var(--accent)}
 .tag-pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.72rem;font-weight:700;margin:2px}
-.tag-pill.red{background:var(--danger-bg);color:var(--danger)}
-.tag-pill.green{background:var(--safe-bg);color:var(--safe)}
-.tag-pill.yellow{background:var(--warn-bg);color:var(--warn)}
-.tag-pill.blue{background:var(--accent-soft);color:var(--accent)}
+.tag-pill.red{background:var(--danger-bg);color:var(--danger)}.tag-pill.green{background:var(--safe-bg);color:var(--safe)}.tag-pill.yellow{background:var(--warn-bg);color:var(--warn)}.tag-pill.blue{background:var(--accent-soft);color:var(--accent)}
 .btn-nova{width:100%;padding:14px;background:transparent;border:1.5px solid var(--border);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s}
 .btn-nova:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
 .ad-banner{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1.5px solid var(--border);height:56px;display:flex;align-items:center;justify-content:center;font-size:.68rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;z-index:99}
@@ -124,8 +119,7 @@ main{max-width:600px;margin:0 auto;padding:20px 16px}
 .bnav-btn{flex:1;padding:9px 4px 7px;background:none;border:none;font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:700;color:var(--muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .2s}
 .bnav-btn .bnav-icon{font-size:1.2rem}
 .bnav-btn.active{color:var(--accent)}
-.page{display:none}
-.page.active{display:block}
+.page{display:none}.page.active{display:block}
 footer{text-align:center;padding:16px 16px 0;font-size:.72rem;color:var(--muted);line-height:1.7}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .fadeUp{animation:fadeUp .35s ease}
@@ -133,23 +127,17 @@ footer{text-align:center;padding:16px 16px 0;font-size:.72rem;color:var(--muted)
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-inner">
     <div class="logo-mark">💊</div>
-    <div class="logo-text">
-      <h1>BulaFácil</h1>
-      <p>Verificador de Medicamentos</p>
-    </div>
+    <div class="logo-text"><h1>BulaFácil</h1><p>Verificador de Medicamentos</p></div>
     <div class="badge-aviso">⚠️ Não substitui médico</div>
   </div>
 </header>
-
 <div class="hero">
   <h2>Seus remédios são<br><em>seguros juntos?</em></h2>
   <p>Verifique interações, entenda para que servem e saiba se são seguros para seu perfil.</p>
 </div>
-
 <main>
   <div id="page-verificar" class="page active">
     <div id="form-area">
@@ -192,43 +180,21 @@ footer{text-align:center;padding:16px 16px 0;font-size:.72rem;color:var(--muted)
       <div id="risk-banner"></div>
       <div id="result-sections"></div>
       <button class="btn-nova" onclick="novaConsulta()">↩ Nova consulta</button>
-      <footer>
-        <strong>BulaFácil v2.0</strong> — Base com 100+ medicamentos.<br>
-        As informações <strong>não substituem</strong> consulta com médico ou farmacêutico.
-      </footer>
+      <footer><strong>BulaFácil v2.2</strong> — 170+ medicamentos, 100+ interações.<br>As informações <strong>não substituem</strong> consulta com médico ou farmacêutico.</footer>
     </div>
   </div>
-
   <div id="page-apoio" class="page">
     <div style="height:16px"></div>
-    <div class="apoio-card">
-      <div style="font-size:2.2rem">📺</div>
-      <h3>Veja um Anúncio</h3>
-      <p>Gratuito para você e nos ajuda a manter o app e adicionar mais medicamentos.</p>
-      <button class="btn-apoio btn-ad" onclick="abrirAd()">▶ ASSISTIR UM ANÚNCIO</button>
-    </div>
-    <div class="apoio-card">
-      <div style="font-size:2.2rem">☕</div>
-      <h3>Contribuição Voluntária</h3>
-      <p>Este app é 100% gratuito. Se ele te ajudou, uma contribuição apoia novos apps gratuitos.</p>
-      <button class="btn-apoio btn-doe" onclick="abrirDoacao()">💛 QUERO CONTRIBUIR</button>
-    </div>
-    <div class="apoio-card" style="text-align:left">
-      <p style="font-size:.78rem;color:var(--muted)">
-        📱 BulaFácil v2.0 &nbsp;|&nbsp; 🇧🇷 Feito no Brasil<br>
-        Funciona 100% offline. Nenhum dado seu é coletado.<br>
-        Base com 100+ medicamentos e 80+ interações documentadas.
-      </p>
-    </div>
+    <div class="apoio-card"><div style="font-size:2.2rem">📺</div><h3>Veja um Anúncio</h3><p>Gratuito para você e nos ajuda a manter o app.</p><button class="btn-apoio btn-ad" onclick="abrirAd()">▶ ASSISTIR UM ANÚNCIO</button></div>
+    <div class="apoio-card"><div style="font-size:2.2rem">☕</div><h3>Contribuição Voluntária</h3><p>Este app é 100% gratuito. Se ele te ajudou, uma contribuição apoia novos apps gratuitos.</p><button class="btn-apoio btn-doe" onclick="abrirDoacao()">💛 QUERO CONTRIBUIR</button></div>
+    <div class="apoio-card" style="text-align:left"><p style="font-size:.78rem;color:var(--muted)">📱 BulaFácil v2.2 &nbsp;|&nbsp; 🇧🇷 Feito no Brasil<br>Funciona 100% offline. Nenhum dado seu é coletado.<br>170+ medicamentos, 100+ interações, busca inteligente com tolerância a erros.</p></div>
   </div>
 </main>
-
 <div class="bottom-nav">
   <button class="bnav-btn active" id="bnav-verificar" onclick="setPage('verificar',this)"><span class="bnav-icon">💊</span>Verificar</button>
   <button class="bnav-btn" id="bnav-apoio" onclick="setPage('apoio',this)"><span class="bnav-icon">❤️</span>Apoio</button>
 </div>
 <div class="ad-banner">[ espaço reservado para anúncio AdMob ]</div>
-
 <div class="ad-modal" id="ad-modal">
   <div class="ad-box">
     <div style="font-size:2rem;margin-bottom:8px">📺</div>
@@ -240,915 +206,217 @@ footer{text-align:center;padding:16px 16px 0;font-size:.72rem;color:var(--muted)
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════
-// BASE DE MEDICAMENTOS (100+)
-// ═══════════════════════════════════════════════════
-const MEDS = [
-  // ── ANALGÉSICOS / ANTITÉRMICOS ──
-  {nome:"Dipirona",sinonimos:["novalgina","metamizol"],classe:"Analgésico / Antipirético",doses:["500mg","1g"],
-   para_que:"Alivia dores moderadas a intensas e febre. Um dos analgésicos mais usados no Brasil.",
-   efeitos:["Reação alérgica (rara)","Queda de pressão se injetado","Agranulocitose (muito rara)"],
-   como_tomar:"500mg a 1g a cada 6–8 horas. Pode ser tomada com ou sem alimentos. Máximo 4g/dia.",
-   gravidez:"cautela",crianca:"seguro",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Paracetamol",sinonimos:["tylenol","acetaminofeno"],classe:"Analgésico / Antipirético",doses:["500mg","750mg","1g"],
-   para_que:"Alivia dores leves a moderadas e febre. Não é anti-inflamatório. Um dos analgésicos mais seguros.",
-   efeitos:["Hepatotoxicidade em superdose","Raramente reação alérgica"],
-   como_tomar:"500mg a 1g a cada 4–6 horas. Máximo 4g/dia (3g/dia em idosos). Nunca superar a dose — pode causar dano grave ao fígado.",
-   gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"seguro"},
-
-  {nome:"Ibuprofeno",sinonimos:["advil","alivium","brufen"],classe:"Anti-inflamatório (AINE)",doses:["200mg","400mg","600mg"],
-   para_que:"Anti-inflamatório, analgésico e antipirético. Usado para dores com inflamação, febre e cólicas.",
-   efeitos:["Dor de estômago","Azia","Náusea","Aumento da pressão","Retenção de líquidos"],
-   como_tomar:"200 a 600mg a cada 6–8 horas. Sempre tomar com alimentos. Máximo 2,4g/dia.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Aspirina",sinonimos:["aas","ácido acetilsalicílico","ecotrin"],classe:"Antiagregante / Anti-inflamatório",doses:["100mg","500mg"],
-   para_que:"Em doses baixas (100mg) previne infarto e AVC. Em doses maiores é anti-inflamatório e analgésico.",
-   efeitos:["Sangramento gástrico","Zumbido em doses altas","Reação alérgica"],
-   como_tomar:"Para prevenção cardiovascular: 100mg uma vez ao dia com refeição. Para dor/febre: 500–1000mg a cada 4–6h.",
-   gravidez:"cautela",crianca:"contraindicado",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Diclofenaco",sinonimos:["voltaren","cataflam","diclo"],classe:"Anti-inflamatório (AINE)",doses:["50mg","75mg","100mg"],
-   para_que:"Anti-inflamatório para dores musculares, artrite, cólicas e inflamações em geral.",
-   efeitos:["Dor de estômago","Azia","Náusea","Aumento da pressão","Risco cardiovascular"],
-   como_tomar:"50 a 100mg 2–3x ao dia com alimentos. Máximo 150mg/dia. Não usar por períodos prolongados.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Naproxeno",sinonimos:["flanax","naproxeno sódico"],classe:"Anti-inflamatório (AINE)",doses:["250mg","500mg"],
-   para_que:"Anti-inflamatório para dores musculares, cólicas menstruais, artrite e inflamações.",
-   efeitos:["Dor de estômago","Azia","Tontura","Retenção de líquidos"],
-   como_tomar:"250 a 500mg 2x ao dia com alimentos. Máximo 1250mg/dia.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Nimesulida",sinonimos:["nimesulida","cimelide"],classe:"Anti-inflamatório (AINE)",doses:["100mg"],
-   para_que:"Anti-inflamatório para dores e inflamações. Ação rápida.",
-   efeitos:["Dor de estômago","Náusea","Hepatotoxicidade (raro)","Tontura"],
-   como_tomar:"100mg 2x ao dia após refeições. Máximo 15 dias de uso.",
-   gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Celecoxibe",sinonimos:["celebra"],classe:"Anti-inflamatório (COX-2 Seletivo)",doses:["100mg","200mg"],
-   para_que:"Anti-inflamatório com menos risco gástrico. Para artrite e dor crônica.",
-   efeitos:["Dor abdominal","Diarreia","Risco cardiovascular","Retenção de líquidos"],
-   como_tomar:"100 a 200mg 1–2x ao dia. Usar menor dose efetiva.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Cetoprofeno",sinonimos:["profenid"],classe:"Anti-inflamatório (AINE)",doses:["50mg","100mg","150mg"],
-   para_que:"Anti-inflamatório para dores musculares, artrite e inflamações.",
-   efeitos:["Dor de estômago","Azia","Náusea","Retenção de líquidos"],
-   como_tomar:"50 a 100mg 2–3x ao dia com alimentos. Máximo 300mg/dia.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Tramadol",sinonimos:["tramal"],classe:"Analgésico Opioide",doses:["50mg","75mg","100mg"],
-   para_que:"Dor moderada a intensa.",
-   efeitos:["Náusea","Tontura","Sonolência","Constipação","Convulsão (raro)"],
-   como_tomar:"50 a 100mg a cada 4–6 horas. Máximo 400mg/dia.",
-   gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Codeína",sinonimos:["codeina"],classe:"Analgésico Opioide",doses:["15mg","30mg","60mg"],
-   para_que:"Dor moderada. Também antitussígeno.",
-   efeitos:["Constipação","Náusea","Sonolência","Dependência"],
-   como_tomar:"15 a 60mg a cada 4–6 horas.",
-   gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Morfina",sinonimos:["morfina"],classe:"Analgésico Opioide Forte",doses:["10mg","30mg","60mg"],
-   para_que:"Analgésico potente para dor intensa (câncer, pós-operatório).",
-   efeitos:["Constipação","Náusea","Sonolência","Dependência","Depressão respiratória"],
-   como_tomar:"Dose individualizada. Liberação imediata: 4–6h. Liberação prolongada: 12–24h.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Colchicina",sinonimos:["colcrys"],classe:"Antigota",doses:["0,5mg"],
-   para_que:"Trata e previne crises de gota. Anti-inflamatório específico.",
-   efeitos:["Diarreia","Náusea","Vômito","Dor abdominal"],
-   como_tomar:"0,5 a 1mg na crise, depois 0,5mg 1–2x ao dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  // ── ANALGÉSICOS COMBINADOS / ANTIESPASMÓDICOS ──
-  {nome:"Dorflex",sinonimos:["dorflex on"],classe:"Analgésico Combinado",doses:["comprimido"],
-   para_que:"Combinação de dipirona + cafeína + orfenadrina. Para dores musculares e de cabeça.",
-   efeitos:["Sonolência","Boca seca","Náusea","Taquicardia"],
-   como_tomar:"1 comprimido a cada 6–8 horas. Máximo 4 comprimidos/dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Neosaldina",sinonimos:[],classe:"Analgésico Combinado",doses:["comprimido"],
-   para_que:"Combinação de dipirona + isometepteno + cafeína. Para dores de cabeça e enxaqueca.",
-   efeitos:["Sonolência","Náusea","Taquicardia","Tontura"],
-   como_tomar:"1–2 comprimidos a cada 4–6 horas. Máximo 6 comprimidos/dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Buscopan",sinonimos:["escopolamina","hioscina"],classe:"Antiespasmódico",doses:["10mg","20mg"],
-   para_que:"Alivia cólicas abdominais, menstruais e espasmos do trato digestivo.",
-   efeitos:["Boca seca","Visão borrada","Constipação","Retenção urinária"],
-   como_tomar:"10 a 20mg 3–5x ao dia conforme necessidade.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  // ── ANTIBIÓTICOS ──
-  {nome:"Amoxicilina",sinonimos:["amoxil"],classe:"Antibiótico (Penicilina)",doses:["250mg","500mg","875mg"],
-   para_que:"Antibiótico para infecções bacterianas respiratórias, urinárias e dentárias.",
-   efeitos:["Diarreia","Náusea","Reação alérgica","Candidíase"],
-   como_tomar:"500mg a cada 8h ou 875mg a cada 12h. Completar o ciclo completo.",
-   gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
-
-  {nome:"Azitromicina",sinonimos:["zithromax","azi"],classe:"Antibiótico (Macrolídeo)",doses:["250mg","500mg"],
-   para_que:"Antibiótico de ciclo curto (3 a 5 dias). Usado para pneumonia, sinusite e infecções de pele.",
-   efeitos:["Diarreia","Náusea","Dor abdominal","Alteração do ritmo cardíaco"],
-   como_tomar:"500mg no 1º dia, depois 250mg por mais 4 dias. Tomar 1h antes ou 2h após refeições.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Ciprofloxacino",sinonimos:["cipro","ciproflox"],classe:"Antibiótico (Fluoroquinolona)",doses:["250mg","500mg","750mg"],
-   para_que:"Antibiótico de amplo espectro. Infecções urinárias, pulmonares e intestinais.",
-   efeitos:["Náusea","Dor de cabeça","Tendinite (rara)","Fotossensibilidade"],
-   como_tomar:"250 a 750mg a cada 12 horas. Tomar com bastante água. Evitar exposição ao sol.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Metronidazol",sinonimos:["flagyl"],classe:"Antibiótico / Antiparasitário",doses:["250mg","400mg","500mg"],
-   para_que:"Trata infecções por bactérias anaeróbias e parasitas (giárdia, tricomoníase, amebíase).",
-   efeitos:["Náusea","Gosto metálico na boca","Tontura","Reação grave com álcool"],
-   como_tomar:"250 a 500mg a cada 8h com alimentos. Evitar álcool completamente durante e 48h após.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Fluconazol",sinonimos:["diflucan"],classe:"Antifúngico",doses:["50mg","100mg","150mg","200mg"],
-   para_que:"Trata candidíase, criptococose e outras infecções fúngicas.",
-   efeitos:["Náusea","Dor de cabeça","Erupção cutânea","Hepatotoxicidade (raro)"],
-   como_tomar:"150mg dose única para candidíase vaginal. 50–400mg/dia para outras infecções.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Aciclovir",sinonimos:["zovirax"],classe:"Antiviral",doses:["200mg","400mg","800mg"],
-   para_que:"Trata herpes labial, genital e varicela-zoster.",
-   efeitos:["Náusea","Dor de cabeça","Diarreia"],
-   como_tomar:"200 a 800mg 5x ao dia. Começar o mais cedo possível.",
-   gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Nistatina",sinonimos:["nistatina"],classe:"Antifúngico",doses:["100.000UI/ml"],
-   para_que:"Trata candidíase oral, vaginal e de pele.",
-   efeitos:["Irritação local","Náusea (oral)","Diarreia"],
-   como_tomar:"Suspensão oral: bochechar e engolir 4x ao dia. Creme: aplicar 2x ao dia.",
-   gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
-
-  // ── GASTRO ──
-  {nome:"Omeprazol",sinonimos:["losec","peprazol"],classe:"Protetor gástrico (IBP)",doses:["10mg","20mg","40mg"],
-   para_que:"Reduz a produção de ácido no estômago. Usado para úlceras, refluxo e gastrite.",
-   efeitos:["Dor de cabeça","Diarreia","Deficiência de magnésio (uso prolongado)"],
-   como_tomar:"20 a 40mg uma vez ao dia em jejum, 30–60 min antes do café. Para úlceras, usar 4–8 semanas.",
-   gravidez:"cautela",crianca:"cautela",idoso:"seguro",amamentando:"cautela"},
-
-  {nome:"Pantoprazol",sinonimos:["pantozol","pantoc"],classe:"Protetor gástrico (IBP)",doses:["20mg","40mg"],
-   para_que:"Similar ao omeprazol. Protege o estômago e trata úlceras. Preferido com clopidogrel.",
-   efeitos:["Dor de cabeça","Diarreia","Flatulência"],
-   como_tomar:"20 a 40mg uma vez ao dia em jejum. Engolir inteiro.",
-   gravidez:"cautela",crianca:"cautela",idoso:"seguro",amamentando:"cautela"},
-
-  {nome:"Simeticona",sinonimos:["luftal","epocler"],classe:"Antiflatulento",doses:["40mg","75mg","150mg"],
-   para_que:"Elimina gases intestinais. Alivia cólicas por flatulência.",
-   efeitos:["Raramente reação alérgica"],
-   como_tomar:"40 a 150mg após refeições e ao deitar.",
-   gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
-
-  {nome:"Lactulose",sinonimos:["lactulona","duphalac"],classe:"Laxante Osmótico",doses:["10g/15ml"],
-   para_que:"Trata constipação intestinal.",
-   efeitos:["Gases","Distensão abdominal","Diarreia (em excesso)"],
-   como_tomar:"15 a 45ml ao dia. Ajustar dose até obter 2–3 evacuações moles por dia.",
-   gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
-
-  {nome:"Loperamida",sinonimos:["imosec"],classe:"Antidiarreico",doses:["2mg"],
-   para_que:"Interrompe diarreia aguda.",
-   efeitos:["Constipação","Tontura","Náusea"],
-   como_tomar:"4mg na primeira dose, depois 2mg após cada evacuação. Máximo 16mg/dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Domperidona",sinonimos:["motilium"],classe:"Antiêmético / Procinético",doses:["10mg"],
-   para_que:"Previne náusea e vômito. Acelera esvaziamento gástrico.",
-   efeitos:["Boca seca","Dor de cabeça","Arritmia (raro)"],
-   como_tomar:"10mg 3x ao dia, 15–30 min antes das refeições. Máximo 30mg/dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Ondansetrona",sinonimos:["vonau"],classe:"Antiêmético",doses:["4mg","8mg"],
-   para_que:"Previne náusea e vômito, especialmente por quimioterapia ou pós-operatório.",
-   efeitos:["Dor de cabeça","Constipação","Tontura"],
-   como_tomar:"4 a 8mg 2–3x ao dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  // ── CARDIOVASCULAR / HIPERTENSÃO ──
-  {nome:"Losartana",sinonimos:["cozaar","losartana potássica"],classe:"Anti-hipertensivo (BRA)",doses:["25mg","50mg","100mg"],
-   para_que:"Trata pressão alta e protege os rins em diabéticos.",
-   efeitos:["Tontura","Hipotensão","Excesso de potássio"],
-   como_tomar:"25 a 100mg uma vez ao dia. Sempre no mesmo horário.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Valsartana",sinonimos:["diovan"],classe:"Anti-hipertensivo (BRA)",doses:["80mg","160mg","320mg"],
-   para_que:"Trata pressão alta e insuficiência cardíaca. Similar à losartana.",
-   efeitos:["Tontura","Hipotensão","Excesso de potássio"],
-   como_tomar:"80 a 320mg uma vez ao dia.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Captopril",sinonimos:["capoten"],classe:"Anti-hipertensivo (IECA)",doses:["12,5mg","25mg","50mg"],
-   para_que:"Trata pressão alta, insuficiência cardíaca e protege os rins em diabéticos.",
-   efeitos:["Tosse seca persistente","Hipotensão na 1ª dose","Excesso de potássio","Angioedema (raro)"],
-   como_tomar:"12,5 a 50mg 2–3x ao dia, preferencialmente 1h antes das refeições.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Enalapril",sinonimos:["vasotec","renitec"],classe:"Anti-hipertensivo (IECA)",doses:["5mg","10mg","20mg"],
-   para_que:"Trata pressão alta e insuficiência cardíaca.",
-   efeitos:["Tosse seca","Tontura","Hipotensão","Excesso de potássio"],
-   como_tomar:"5 a 40mg por dia, dividido em 1–2 doses.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Amlodipino",sinonimos:["norvasc","amlodipina"],classe:"Anti-hipertensivo (Bloqueador de cálcio)",doses:["2,5mg","5mg","10mg"],
-   para_que:"Trata pressão alta e angina. Relaxa os vasos sanguíneos.",
-   efeitos:["Inchaço nos tornozelos","Rubor facial","Palpitações","Tontura"],
-   como_tomar:"2,5 a 10mg uma vez ao dia. Pode tomar em qualquer horário.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Atenolol",sinonimos:["tenormin"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["25mg","50mg","100mg"],
-   para_que:"Trata pressão alta, angina no peito e arritmias. Reduz a frequência cardíaca.",
-   efeitos:["Bradicardia","Fadiga","Extremidades frias","Disfunção erétil"],
-   como_tomar:"25 a 100mg uma vez ao dia. Não interromper abruptamente.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Carvedilol",sinonimos:["coreg","dilatrend"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["3,125mg","6,25mg","12,5mg","25mg"],
-   para_que:"Trata insuficiência cardíaca, pressão alta e pós-infarto.",
-   efeitos:["Bradicardia","Tontura","Fadiga","Hipotensão ao levantar"],
-   como_tomar:"Iniciar com 3,125mg 2x ao dia e aumentar gradualmente. Tomar com alimentos.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Propranolol",sinonimos:["inderal"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["10mg","20mg","40mg","80mg"],
-   para_que:"Trata pressão alta, ansiedade, tremor e prevenção de enxaqueca.",
-   efeitos:["Bradicardia","Fadiga","Extremidades frias","Sonhos vívidos"],
-   como_tomar:"10 a 80mg 2–3x ao dia. Não interromper abruptamente.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Metoprolol",sinonimos:["seloken"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["25mg","50mg","100mg"],
-   para_que:"Trata pressão alta, angina, insuficiência cardíaca e arritmias.",
-   efeitos:["Bradicardia","Fadiga","Tontura"],
-   como_tomar:"25 a 200mg por dia, dividido em 1–2 doses.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Furosemida",sinonimos:["lasix"],classe:"Diurético",doses:["20mg","40mg"],
-   para_que:"Elimina o excesso de líquido do corpo. Usado em insuficiência cardíaca e pressão alta.",
-   efeitos:["Perda de potássio","Desidratação","Tontura ao levantar","Câimbras"],
-   como_tomar:"20 a 80mg ao dia, preferencialmente de manhã.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Espironolactona",sinonimos:["aldactone"],classe:"Diurético (Poupador de potássio)",doses:["25mg","50mg","100mg"],
-   para_que:"Diurético que poupa potássio. Usado em insuficiência cardíaca e pressão alta.",
-   efeitos:["Excesso de potássio","Ginecomastia em homens","Distúrbios menstruais","Tontura"],
-   como_tomar:"25 a 100mg ao dia com alimentos. Monitorar potássio.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Hidroclorotiazida",sinonimos:["hctz"],classe:"Diurético Tiazídico",doses:["12,5mg","25mg","50mg"],
-   para_que:"Diurético para pressão alta e inchaço.",
-   efeitos:["Perda de potássio","Aumento de ácido úrico","Fotossensibilidade"],
-   como_tomar:"12,5 a 50mg uma vez ao dia pela manhã com alimentos.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Digoxina",sinonimos:["lanoxin"],classe:"Cardiotônico",doses:["0,125mg","0,25mg"],
-   para_que:"Fortalece a contração do coração e controla arritmias. Margem terapêutica estreita.",
-   efeitos:["Náusea","Vômito","Visão amarelada ou borrada","Bradicardia","Toxicidade grave em superdose"],
-   como_tomar:"Dose individualizada. Tomar no mesmo horário. Monitorar nível de digoxina no sangue.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  // ── ANTICOAGULANTES ──
-  {nome:"Varfarina",sinonimos:["coumadin","marevan"],classe:"Anticoagulante",doses:["1mg","2mg","2,5mg","5mg"],
-   para_que:"Previne a formação de coágulos. Usado em fibrilação atrial, trombose e válvulas cardíacas mecânicas.",
-   efeitos:["Sangramento","Hematomas","Hemorragia"],
-   como_tomar:"Dose individualizada pelo exame INR. Tomar sempre no mesmo horário. Monitorar INR regularmente.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Clopidogrel",sinonimos:["plavix"],classe:"Antiagregante plaquetário",doses:["75mg"],
-   para_que:"Previne coágulos em artérias. Usado após infarto, AVC ou colocação de stent.",
-   efeitos:["Sangramento","Hematomas","Dor abdominal"],
-   como_tomar:"75mg uma vez ao dia com ou sem alimentos. Não interromper sem autorização médica.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Enoxaparina",sinonimos:["clexane"],classe:"Anticoagulante (HBPM)",doses:["20mg","40mg","60mg","80mg"],
-   para_que:"Previne e trata trombose. Mais previsível que heparina.",
-   efeitos:["Sangramento","Hematoma no local","Trombocitopenia"],
-   como_tomar:"40mg SC uma vez ao dia para prevenção. 1mg/kg 2x ao dia para tratamento.",
-   gravidez:"seguro",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Rivaroxabana",sinonimos:["xarelto"],classe:"Anticoagulante Oral Direto",doses:["10mg","15mg","20mg"],
-   para_que:"Previne AVC, trombose e embolia.",
-   efeitos:["Sangramento","Náusea","Tontura"],
-   como_tomar:"10 a 20mg uma vez ao dia com alimentos.",
-   gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Apixabana",sinonimos:["eliquis"],classe:"Anticoagulante Oral Direto",doses:["2,5mg","5mg"],
-   para_que:"Previne AVC em fibrilação atrial. Menor risco de sangramento.",
-   efeitos:["Sangramento","Náusea","Anemia"],
-   como_tomar:"2,5 a 5mg 2x ao dia.",
-   gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
-
-  // ── COLESTEROL ──
-  {nome:"Sinvastatina",sinonimos:["zocor"],classe:"Colesterol (Estatina)",doses:["10mg","20mg","40mg"],
-   para_que:"Reduz o colesterol LDL e triglicerídeos. Protege contra infarto e AVC.",
-   efeitos:["Dores musculares","Fraqueza muscular","Elevação de enzimas hepáticas"],
-   como_tomar:"10 a 40mg uma vez ao dia à noite. Evitar suco de grapefruit.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Atorvastatina",sinonimos:["lipitor","citalor"],classe:"Colesterol (Estatina)",doses:["10mg","20mg","40mg","80mg"],
-   para_que:"Reduz o colesterol LDL e triglicerídeos. Pode ser tomada em qualquer horário.",
-   efeitos:["Dores musculares","Dor de cabeça","Diarreia","Elevação de enzimas hepáticas"],
-   como_tomar:"10 a 80mg uma vez ao dia, qualquer horário.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Rosuvastatina",sinonimos:["crestor"],classe:"Colesterol (Estatina)",doses:["5mg","10mg","20mg","40mg"],
-   para_que:"Reduz colesterol LDL e triglicerídeos. Mais potente que outras estatinas.",
-   efeitos:["Dores musculares","Dor de cabeça","Náusea","Elevação de enzimas hepáticas"],
-   como_tomar:"5 a 40mg uma vez ao dia, qualquer horário.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Fenofibrato",sinonimos:["lipidil"],classe:"Colesterol (Fibrato)",doses:["145mg","200mg"],
-   para_que:"Reduz triglicerídeos principalmente. Pode aumentar HDL.",
-   efeitos:["Dores musculares","Dor abdominal","Náusea","Cálculos biliares"],
-   como_tomar:"145 a 200mg uma vez ao dia com alimentos.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Ezetimiba",sinonimos:["ezetimiba"],classe:"Colesterol (Inibidor de Absorção)",doses:["10mg"],
-   para_que:"Reduz absorção de colesterol no intestino. Usado com estatinas.",
-   efeitos:["Diarreia","Dor abdominal","Fadiga"],
-   como_tomar:"10mg uma vez ao dia.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  // ── DIABETES ──
-  {nome:"Metformina",sinonimos:["glifage","glucoformin","dimefor"],classe:"Antidiabético (Biguanida)",doses:["500mg","850mg","1g"],
-   para_que:"Principal medicamento para diabetes tipo 2. Reduz produção de glicose no fígado.",
-   efeitos:["Náusea","Diarreia","Dor abdominal","Deficiência de vitamina B12 (uso prolongado)"],
-   como_tomar:"500 a 1000mg 2x ao dia junto às refeições.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Glibenclamida",sinonimos:["daonil","euglucon"],classe:"Antidiabético (Sulfonilureia)",doses:["5mg"],
-   para_que:"Estimula o pâncreas a produzir mais insulina. Usado no diabetes tipo 2.",
-   efeitos:["Hipoglicemia","Ganho de peso","Náusea"],
-   como_tomar:"2,5 a 20mg por dia, tomado com o café da manhã. Monitorar glicemia.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Gliclazida",sinonimos:["diamicron"],classe:"Antidiabético (Sulfonilureia)",doses:["30mg","60mg","80mg"],
-   para_que:"Estimula produção de insulina. Para diabetes tipo 2.",
-   efeitos:["Hipoglicemia","Ganho de peso","Náusea"],
-   como_tomar:"30 a 120mg ao dia com café da manhã.",
-   gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Sitagliptina",sinonimos:["januvia"],classe:"Antidiabético (Inibidor DPP-4)",doses:["25mg","50mg","100mg"],
-   para_que:"Aumenta insulina quando glicose está alta. Baixo risco de hipoglicemia.",
-   efeitos:["Dor de cabeça","Nasofaringite","Dor abdominal"],
-   como_tomar:"100mg uma vez ao dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Empagliflozina",sinonimos:["jardiance"],classe:"Antidiabético (Inibidor SGLT2)",doses:["10mg","25mg"],
-   para_que:"Elimina glicose pela urina. Também protege coração e rins.",
-   efeitos:["Infecções urinárias","Candidíase","Desidratação","Hipotensão"],
-   como_tomar:"10 a 25mg uma vez ao dia pela manhã.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Insulina NPH",sinonimos:["insulina","nph"],classe:"Antidiabético (Insulina)",doses:["100UI/ml"],
-   para_que:"Reposição de insulina para diabetes tipo 1 e tipo 2.",
-   efeitos:["Hipoglicemia","Ganho de peso","Reação no local da aplicação"],
-   como_tomar:"Aplicar subcutânea conforme prescrição. Monitorar glicemia.",
-   gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"seguro"},
-
-  // ── ANSIOLÍTICOS / HIPNÓTICOS / NEUROLÓGICOS ──
-  {nome:"Clonazepam",sinonimos:["rivotril"],classe:"Ansiolítico / Anticonvulsivante",doses:["0,5mg","1mg","2mg"],
-   para_que:"Trata epilepsia, transtorno de pânico e ansiedade.",
-   efeitos:["Sonolência","Tontura","Dependência física","Comprometimento cognitivo em idosos"],
-   como_tomar:"0,5 a 2mg 2–3x ao dia. Não interromper abruptamente. Evitar álcool.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Diazepam",sinonimos:["valium"],classe:"Ansiolítico (Benzodiazepínico)",doses:["2mg","5mg","10mg"],
-   para_que:"Trata ansiedade, espasmos musculares e convulsões. Alto potencial de dependência.",
-   efeitos:["Sonolência intensa","Dependência","Comprometimento cognitivo","Amnésia"],
-   como_tomar:"2 a 10mg 2–4x ao dia. Usar pelo menor tempo possível. Evitar álcool absolutamente.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Alprazolam",sinonimos:["frontal","xanax"],classe:"Ansiolítico (Benzodiazepínico)",doses:["0,25mg","0,5mg","1mg"],
-   para_que:"Trata transtorno de pânico e ansiedade. Ação rápida. Alto potencial de dependência.",
-   efeitos:["Sonolência","Dependência","Comprometimento de memória"],
-   como_tomar:"0,25 a 1mg 3x ao dia. Nunca parar de uma vez.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Zolpidem",sinonimos:["zolpimist"],classe:"Hipnótico",doses:["5mg","10mg"],
-   para_que:"Induz sono rapidamente. Para insônia de curto prazo.",
-   efeitos:["Sonolência diurna","Tontura","Amnésia","Comportamentos complexos durante sono"],
-   como_tomar:"5 a 10mg ao deitar. Uso máximo 4 semanas.",
-   gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Gabapentina",sinonimos:["neurontin"],classe:"Anticonvulsivante / Analgésico Neuropático",doses:["100mg","300mg","400mg"],
-   para_que:"Trata dor neuropática, epilepsia e ansiedade.",
-   efeitos:["Sonolência","Tontura","Inchaço","Fadiga"],
-   como_tomar:"100 a 600mg 3x ao dia. Aumentar dose gradualmente.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Pregabalina",sinonimos:["lyrica"],classe:"Anticonvulsivante / Analgésico Neuropático",doses:["75mg","150mg","300mg"],
-   para_que:"Trata dor neuropática, fibromialgia e ansiedade generalizada.",
-   efeitos:["Sonolência","Tontura","Inchaço","Ganho de peso"],
-   como_tomar:"75 a 300mg 2x ao dia. Ajustar em insuficiência renal.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Valproato",sinonimos:["depakote"],classe:"Anticonvulsivante / Estabilizador de Humor",doses:["250mg","500mg"],
-   para_que:"Trata epilepsia, transtorno bipolar e previne enxaqueca.",
-   efeitos:["Náusea","Ganho de peso","Tremor","Queda de cabelo","Hepatotoxicidade"],
-   como_tomar:"250 a 500mg 2–3x ao dia com alimentos. Monitorar enzimas hepáticas.",
-   gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Melatonina",sinonimos:["circadin"],classe:"Hormônio do Sono",doses:["1mg","3mg","5mg","10mg"],
-   para_que:"Regula ciclo sono-vigília. Para insônia e jet lag.",
-   efeitos:["Sonolência diurna","Dor de cabeça","Tontura"],
-   como_tomar:"1 a 10mg 30–60 min antes de dormir. Começar com dose baixa.",
-   gravidez:"cautela",crianca:"cautela",idoso:"seguro",amamentando:"cautela"},
-
-  // ── ANTIDEPRESSIVOS / ANTIPSICÓTICOS ──
-  {nome:"Fluoxetina",sinonimos:["prozac","daforin","eufor"],classe:"Antidepressivo (ISRS)",doses:["10mg","20mg","40mg"],
-   para_que:"Trata depressão, TOC, bulimia e transtorno de pânico.",
-   efeitos:["Náusea","Insônia","Cefaleia","Disfunção sexual","Perda de apetite"],
-   como_tomar:"20 a 60mg uma vez ao dia, preferencialmente de manhã.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Sertralina",sinonimos:["zoloft","tolrest"],classe:"Antidepressivo (ISRS)",doses:["25mg","50mg","100mg"],
-   para_que:"Trata depressão, ansiedade, TOC, fobia social e transtorno de pânico.",
-   efeitos:["Náusea","Diarreia","Insônia","Disfunção sexual"],
-   como_tomar:"50 a 200mg uma vez ao dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Escitalopram",sinonimos:["lexapro"],classe:"Antidepressivo (ISRS)",doses:["5mg","10mg","20mg"],
-   para_que:"Trata depressão e ansiedade. Mais seletivo que fluoxetina.",
-   efeitos:["Náusea","Insônia","Disfunção sexual"],
-   como_tomar:"10 a 20mg uma vez ao dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Amitriptilina",sinonimos:["tryptanol","amytril"],classe:"Antidepressivo Tricíclico",doses:["10mg","25mg","50mg"],
-   para_que:"Trata depressão, dor neuropática e enxaqueca (doses baixas).",
-   efeitos:["Sonolência intensa","Boca seca","Constipação","Taquicardia","Tontura ao levantar"],
-   como_tomar:"10 a 150mg ao dia, geralmente à noite. Aumentar dose gradualmente.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Venlafaxina",sinonimos:["efexor"],classe:"Antidepressivo (ISRSN)",doses:["37,5mg","75mg","150mg"],
-   para_que:"Trata depressão, ansiedade e dor neuropática.",
-   efeitos:["Náusea","Tontura","Insônia","Aumento de pressão"],
-   como_tomar:"75 a 225mg ao dia com alimentos. Monitorar pressão.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Quetiapina",sinonimos:["seroquel"],classe:"Antipsicótico Atípico",doses:["25mg","50mg","100mg","200mg","300mg"],
-   para_que:"Trata esquizofrenia, transtorno bipolar e depressão.",
-   efeitos:["Sonolência","Ganho de peso","Tontura","Boca seca","Aumento de glicose"],
-   como_tomar:"50 a 800mg ao dia. Começar com dose baixa à noite.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Risperidona",sinonimos:["risperdal"],classe:"Antipsicótico Atípico",doses:["1mg","2mg","3mg","4mg"],
-   para_que:"Trata esquizofrenia, transtorno bipolar e irritabilidade no autismo.",
-   efeitos:["Ganho de peso","Sonolência","Rigidez muscular","Aumento de prolactina"],
-   como_tomar:"1 a 6mg ao dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  // ── HORMÔNIOS / TIREOIDE ──
-  {nome:"Levotiroxina",sinonimos:["puran t4","synthroid","euthyrox"],classe:"Hormônio Tireoidiano",doses:["25mcg","50mcg","75mcg","100mcg","150mcg"],
-   para_que:"Reposição do hormônio T4 para hipotireoidismo. Regula o metabolismo.",
-   efeitos:["Palpitações (superdose)","Insônia (superdose)","Perda de peso (superdose)","Osteoporose (longo prazo)"],
-   como_tomar:"Tomar em jejum, 30–60 min antes do café da manhã. Nunca junto com cálcio, ferro ou antiácidos.",
-   gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"seguro"},
-
-  // ── CORTICOSTEROIDES ──
-  {nome:"Prednisona",sinonimos:["meticorten"],classe:"Corticosteroide",doses:["5mg","10mg","20mg"],
-   para_que:"Anti-inflamatório e imunossupressor potente. Usado em asma, artrite, lúpus e alergias graves.",
-   efeitos:["Aumento de apetite e peso","Retenção de líquidos","Hiperglicemia","Imunossupressão","Osteoporose (longo prazo)"],
-   como_tomar:"Dose varia muito. Tomar com alimentos de manhã. Nunca interromper abruptamente após uso prolongado.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  {nome:"Dexametasona",sinonimos:["decadron"],classe:"Corticosteroide",doses:["0,5mg","4mg","8mg"],
-   para_que:"Corticoide potente. Usado em inflamações graves, alergia severa e edema cerebral.",
-   efeitos:["Aumento do açúcar","Retenção de líquidos","Imunossupressão","Osteoporose"],
-   como_tomar:"Dose conforme indicação médica, sempre com alimentos. Não interromper abruptamente.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  // ── ANTIALÉRGICOS ──
-  {nome:"Loratadina",sinonimos:["claritin","loratamed"],classe:"Antialérgico (Anti-histamínico)",doses:["10mg"],
-   para_que:"Trata rinite alérgica, urticária e dermatite alérgica sem causar sonolência significativa.",
-   efeitos:["Cefaleia (raro)","Boca seca","Sonolência leve (raro)"],
-   como_tomar:"10mg uma vez ao dia.",
-   gravidez:"cautela",crianca:"seguro",idoso:"seguro",amamentando:"cautela"},
-
-  {nome:"Cetirizina",sinonimos:["zyrtec","cetizine"],classe:"Antialérgico (Anti-histamínico)",doses:["5mg","10mg"],
-   para_que:"Alivia rinite alérgica, urticária e coceira. Pode causar leve sonolência.",
-   efeitos:["Sonolência leve","Boca seca","Cefaleia"],
-   como_tomar:"10mg uma vez ao dia à noite.",
-   gravidez:"cautela",crianca:"seguro",idoso:"seguro",amamentando:"cautela"},
-
-  {nome:"Montelucaste",sinonimos:["singulair"],classe:"Antileucotrieno",doses:["4mg","5mg","10mg"],
-   para_que:"Prevenção de asma e rinite alérgica.",
-   efeitos:["Dor de cabeça","Dor abdominal","Tosse","Alterações de humor (raro)"],
-   como_tomar:"10mg uma vez ao dia à noite (adulto). 4mg (crianças menores de 5 anos).",
-   gravidez:"cautela",crianca:"seguro",idoso:"cautela",amamentando:"cautela"},
-
-  // ── RESPIRATÓRIO ──
-  {nome:"Salbutamol",sinonimos:["aerolin","ventolin"],classe:"Broncodilatador (Beta-2 Agonista)",doses:["100mcg/jato"],
-   para_que:"Alivia broncoespasmo em asma e DPOC. Ação rápida.",
-   efeitos:["Tremor","Taquicardia","Palpitações","Dor de cabeça"],
-   como_tomar:"1–2 jatos sob demanda para alívio. Máximo 8 jatos/dia.",
-   gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"seguro"},
-
-  {nome:"Budesonida",sinonimos:["pulmicort"],classe:"Corticoide Inalatório",doses:["100mcg/jato","200mcg/jato"],
-   para_que:"Prevenção de crises de asma. Anti-inflamatório local.",
-   efeitos:["Candidíase oral","Rouquidão","Tosse"],
-   como_tomar:"100 a 800mcg 2x ao dia. Enxaguar boca após uso.",
-   gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
-
-  // ── OSTEOPOROSE / GOTA ──
-  {nome:"Alendronato",sinonimos:["fosamax"],classe:"Bifosfonato (Osteoporose)",doses:["10mg","70mg"],
-   para_que:"Trata e previne osteoporose. Fortalece ossos.",
-   efeitos:["Dor de estômago","Refluxo","Dor óssea"],
-   como_tomar:"70mg uma vez por semana em jejum. Permanecer em pé por 30 min após tomar.",
-   gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
-
-  {nome:"Alopurinol",sinonimos:["ziloric"],classe:"Redutor de Ácido Úrico",doses:["100mg","300mg"],
-   para_que:"Previne crises de gota. Reduz produção de ácido úrico.",
-   efeitos:["Erupção cutânea","Náusea","Diarreia","Sonolência"],
-   como_tomar:"100 a 300mg ao dia após refeições. Beber bastante água.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  // ── TDAH ──
-  {nome:"Metilfenidato",sinonimos:["ritalina","concerta"],classe:"Estimulante (TDAH)",doses:["5mg","10mg","18mg","36mg"],
-   para_que:"Trata TDAH e narcolepsia. Melhora foco e atenção.",
-   efeitos:["Insônia","Perda de apetite","Dor de cabeça","Aumento de pressão","Dependência"],
-   como_tomar:"5 a 60mg ao dia. Liberação imediata: 2–3x/dia. Prolongada: 1x/dia.",
-   gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
-
-  // ── VITAMINAS / SUPLEMENTOS ──
-  {nome:"Ácido Fólico",sinonimos:["folato"],classe:"Vitamina",doses:["400mcg","5mg"],
-   para_que:"Previne defeitos do tubo neural em gestantes. Trata anemia.",
-   efeitos:["Raramente efeitos adversos"],
-   como_tomar:"400mcg ao dia para prevenção. 5mg ao dia para tratamento de deficiência.",
-   gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
-
-  {nome:"Vitamina D",sinonimos:["colecalciferol","vitamina d3"],classe:"Vitamina",doses:["400UI","1000UI","2000UI","5000UI"],
-   para_que:"Fortalece ossos. Previne osteoporose. Importante para imunidade.",
-   efeitos:["Hipercalcemia (superdose)","Náusea (superdose)"],
-   como_tomar:"400–2000UI ao dia com alimentos gordurosos.",
-   gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
-
-  {nome:"Ferro",sinonimos:["sulfato ferroso"],classe:"Mineral",doses:["40mg","60mg","100mg"],
-   para_que:"Trata anemia ferropriva. Essencial para hemoglobina.",
-   efeitos:["Constipação","Náusea","Fezes escuras","Dor abdominal"],
-   como_tomar:"40–100mg ao dia em jejum com vitamina C. Evitar leite e antiácidos.",
-   gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"seguro"},
-
-  {nome:"Cálcio",sinonimos:["carbonato de calcio"],classe:"Mineral",doses:["500mg","600mg","1000mg"],
-   para_que:"Fortalece ossos e dentes. Previne osteoporose.",
-   efeitos:["Constipação","Gases","Cálculos renais (superdose)"],
-   como_tomar:"500–1000mg ao dia dividido. Tomar com alimentos. Separar de levotiroxina e antibióticos.",
-   gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
-];
-
-// ═══════════════════════════════════════════════════
-// BASE DE INTERAÇÕES (80+)
-// ═══════════════════════════════════════════════════
-const INTERACOES = [
-  {meds:["Ibuprofeno","Varfarina"],grav:"grave",
-   desc:"O ibuprofeno aumenta o efeito anticoagulante da varfarina e pode causar lesão no estômago. Juntos, aumentam muito o risco de sangramento grave.",
-   rec:"Evite usar juntos. Para dor, prefira paracetamol. Se necessário, monitore o INR frequentemente."},
-  {meds:["Aspirina","Varfarina"],grav:"grave",
-   desc:"Dois anticoagulantes/antiagregantes juntos aumentam muito o risco de sangramento grave, incluindo hemorragia cerebral.",
-   rec:"Use apenas sob orientação médica rigorosa com monitoramento frequente do INR."},
-  {meds:["Ibuprofeno","Aspirina"],grav:"grave",
-   desc:"Dois anti-inflamatórios juntos aumentam o risco de sangramento gástrico e úlcera. O ibuprofeno pode bloquear o efeito protetor da aspirina no coração.",
-   rec:"Evite usar juntos. Para dor adicional, prefira paracetamol."},
-  {meds:["Clonazepam","Diazepam"],grav:"grave",
-   desc:"Dois calmantes da mesma família juntos causam sonolência excessiva e podem comprometer a respiração.",
-   rec:"Nunca use dois calmantes desta família ao mesmo tempo sem prescrição médica especializada."},
-  {meds:["Clonazepam","Alprazolam"],grav:"grave",
-   desc:"Dois benzodiazepínicos juntos somam efeitos sedativos. Risco de queda, confusão e depressão respiratória.",
-   rec:"Evite usar juntos. Consulte seu médico para ajustar a medicação."},
-  {meds:["Diazepam","Alprazolam"],grav:"grave",
-   desc:"Dois ansiolíticos da mesma família aumentam o risco de sedação excessiva, quedas e problemas respiratórios.",
-   rec:"Não usar juntos. Procure orientação médica."},
-  {meds:["Atenolol","Digoxina"],grav:"grave",
-   desc:"Ambos reduzem a frequência cardíaca. Juntos podem deixar o coração muito lento (bradicardia grave) ou causar bloqueio cardíaco.",
-   rec:"Monitoramento cardíaco obrigatório. Consulte o médico se sentir tontura, desmaio ou batimento muito lento."},
-  {meds:["Carvedilol","Digoxina"],grav:"grave",
-   desc:"Combinação pode reduzir demais a frequência cardíaca, aumentando risco de bloqueio cardíaco.",
-   rec:"Use somente com monitoramento regular de eletrocardiograma e nível de digoxina no sangue."},
-  {meds:["Losartana","Captopril"],grav:"grave",
-   desc:"Dois medicamentos que agem no mesmo sistema juntos aumentam o risco de queda de pressão, excesso de potássio e danos aos rins.",
-   rec:"Não usar juntos. Use apenas um deles conforme prescrito."},
-  {meds:["Losartana","Enalapril"],grav:"grave",
-   desc:"Dois bloqueadores do mesmo sistema aumentam risco de hipercalemia e lesão renal grave.",
-   rec:"Não usar juntos. Consulte seu médico."},
-  {meds:["Captopril","Enalapril"],grav:"grave",
-   desc:"Dois medicamentos da mesma classe (IECA) juntos não trazem benefício adicional e dobram o risco de efeitos adversos.",
-   rec:"Use apenas um deles. Procure seu médico."},
-  {meds:["Fluoxetina","Amitriptilina"],grav:"grave",
-   desc:"A fluoxetina aumenta os níveis de amitriptilina, podendo causar arritmia cardíaca e síndrome serotoninérgica.",
-   rec:"Evite combinação. Se necessário, use com monitoramento médico rigoroso e doses reduzidas."},
-  {meds:["Prednisona","Ibuprofeno"],grav:"grave",
-   desc:"Corticoide + anti-inflamatório juntos aumentam muito o risco de úlcera e sangramento no estômago.",
-   rec:"Evite combinação. Se necessário, use protetor gástrico (omeprazol ou pantoprazol)."},
-  {meds:["Dexametasona","Ibuprofeno"],grav:"grave",
-   desc:"Corticoide + anti-inflamatório juntos aumentam muito o risco de úlcera e sangramento gastrointestinal.",
-   rec:"Evite combinação. Se necessário, use protetor gástrico."},
-  {meds:["Tramadol","Fluoxetina"],grav:"grave",
-   desc:"Risco de síndrome serotoninérgica (agitação, confusão, taquicardia) e convulsões.",
-   rec:"Evitar combinação. Se necessário, monitorar cuidadosamente."},
-  {meds:["Tramadol","Sertralina"],grav:"grave",
-   desc:"Aumento do risco de síndrome serotoninérgica grave.",
-   rec:"Evitar combinação ou usar com extrema cautela."},
-  {meds:["Tramadol","Amitriptilina"],grav:"grave",
-   desc:"Risco aumentado de convulsões e síndrome serotoninérgica.",
-   rec:"Evitar combinação."},
-  {meds:["Codeína","Clonazepam"],grav:"grave",
-   desc:"Depressão do sistema nervoso central. Risco de depressão respiratória grave.",
-   rec:"Nunca usar juntos sem supervisão médica intensiva."},
-  {meds:["Codeína","Diazepam"],grav:"grave",
-   desc:"Combinação potencialmente fatal por depressão respiratória.",
-   rec:"Evitar absolutamente."},
-  {meds:["Morfina","Clonazepam"],grav:"grave",
-   desc:"Risco extremo de depressão respiratória e morte.",
-   rec:"Não usar juntos."},
-  {meds:["Morfina","Diazepam"],grav:"grave",
-   desc:"Depressão respiratória grave. Risco de coma e morte.",
-   rec:"Contraindicado."},
-  {meds:["Zolpidem","Clonazepam"],grav:"grave",
-   desc:"Sedação excessiva e risco de depressão respiratória.",
-   rec:"Evitar combinação."},
-  {meds:["Dipirona","Varfarina"],grav:"moderada",
-   desc:"A dipirona pode aumentar o efeito anticoagulante da varfarina, elevando o risco de sangramento.",
-   rec:"Prefira paracetamol para dor se estiver tomando varfarina. Se usar dipirona, monitore o INR."},
-  {meds:["Paracetamol","Varfarina"],grav:"moderada",
-   desc:"Uso regular de paracetamol pode aumentar levemente o efeito da varfarina. Uma dose ocasional é geralmente segura.",
-   rec:"Evite uso diário e prolongado. Monitore o INR regularmente."},
-  {meds:["Sinvastatina","Azitromicina"],grav:"moderada",
-   desc:"A azitromicina pode aumentar o nível de sinvastatina, elevando o risco de dor muscular intensa (miopatia).",
-   rec:"Suspenda temporariamente a sinvastatina durante o tratamento com azitromicina. Informe seu médico."},
-  {meds:["Atorvastatina","Azitromicina"],grav:"moderada",
-   desc:"A azitromicina pode elevar os níveis de atorvastatina, aumentando o risco de dor muscular.",
-   rec:"Considere suspender temporariamente a estatina. Informe seu médico."},
-  {meds:["Rosuvastatina","Azitromicina"],grav:"moderada",
-   desc:"Azitromicina pode elevar os níveis de rosuvastatina, aumentando o risco de miopatia.",
-   rec:"Informe seu médico. Pode ser necessário monitoramento."},
-  {meds:["Omeprazol","Clopidogrel"],grav:"moderada",
-   desc:"O omeprazol pode reduzir a eficácia do clopidogrel, porque bloqueia a enzima que o ativa no organismo.",
-   rec:"Prefira pantoprazol como protetor gástrico quando usar clopidogrel. Converse com seu médico."},
-  {meds:["Metformina","Furosemida"],grav:"moderada",
-   desc:"A furosemida pode aumentar o nível de metformina. Em pacientes com função renal reduzida, há risco de acidose láctica.",
-   rec:"Monitorar função renal. Atenção a sintomas como fraqueza, náusea e dor abdominal."},
-  {meds:["Metformina","Prednisona"],grav:"moderada",
-   desc:"A prednisona eleva o açúcar no sangue, reduzindo o efeito da metformina no controle do diabetes.",
-   rec:"Monitorar glicemia frequentemente. Pode ser necessário ajuste de dose da metformina."},
-  {meds:["Metformina","Dexametasona"],grav:"moderada",
-   desc:"A dexametasona eleva a glicemia, prejudicando o controle do diabetes pela metformina.",
-   rec:"Monitorar glicemia com mais frequência durante o uso do corticoide."},
-  {meds:["Levotiroxina","Ciprofloxacino"],grav:"moderada",
-   desc:"O ciprofloxacino pode reduzir a absorção da levotiroxina.",
-   rec:"Tome a levotiroxina no mínimo 2 horas antes do ciprofloxacino."},
-  {meds:["Amoxicilina","Varfarina"],grav:"moderada",
-   desc:"Antibióticos alteram as bactérias intestinais que produzem vitamina K, podendo aumentar o efeito anticoagulante da varfarina.",
-   rec:"Monitore o INR durante e após o tratamento com antibiótico."},
-  {meds:["Azitromicina","Varfarina"],grav:"moderada",
-   desc:"A azitromicina pode aumentar o efeito anticoagulante da varfarina.",
-   rec:"Monitore o INR durante o tratamento."},
-  {meds:["Ciprofloxacino","Varfarina"],grav:"moderada",
-   desc:"O ciprofloxacino aumenta o efeito anticoagulante da varfarina, elevando o risco de sangramento.",
-   rec:"Monitore o INR frequentemente durante e após o tratamento."},
-  {meds:["Ibuprofeno","Captopril"],grav:"moderada",
-   desc:"Anti-inflamatórios reduzem o efeito do captopril e podem prejudicar os rins.",
-   rec:"Prefira paracetamol. Monitore a pressão arterial."},
-  {meds:["Ibuprofeno","Losartana"],grav:"moderada",
-   desc:"Anti-inflamatórios reduzem o efeito da losartana e podem prejudicar a função renal.",
-   rec:"Prefira paracetamol. Monitore pressão e função renal."},
-  {meds:["Ibuprofeno","Enalapril"],grav:"moderada",
-   desc:"Anti-inflamatórios reduzem o efeito do enalapril e aumentam o risco de danos aos rins.",
-   rec:"Prefira paracetamol. Monitore pressão e função renal."},
-  {meds:["Diclofenaco","Captopril"],grav:"moderada",
-   desc:"Anti-inflamatórios reduzem o efeito do captopril e podem prejudicar os rins.",
-   rec:"Prefira paracetamol. Monitore a pressão arterial."},
-  {meds:["Diclofenaco","Losartana"],grav:"moderada",
-   desc:"Anti-inflamatórios reduzem o efeito da losartana e prejudicam a função renal.",
-   rec:"Prefira paracetamol. Monitore pressão e função renal."},
-  {meds:["Naproxeno","Varfarina"],grav:"moderada",
-   desc:"Naproxeno pode aumentar o efeito anticoagulante da varfarina.",
-   rec:"Prefira paracetamol. Monitore o INR."},
-  {meds:["Espironolactona","Captopril"],grav:"moderada",
-   desc:"Ambos aumentam o potássio no sangue. Juntos, o potássio pode subir demais, causando arritmia.",
-   rec:"Monitorar nível de potássio regularmente."},
-  {meds:["Espironolactona","Enalapril"],grav:"moderada",
-   desc:"Combinação pode causar hipercalemia (excesso de potássio), com risco de arritmia.",
-   rec:"Monitorar potássio sérico. Use somente com supervisão médica."},
-  {meds:["Espironolactona","Losartana"],grav:"moderada",
-   desc:"Risco de hipercalemia — excesso de potássio no sangue que pode afetar o coração.",
-   rec:"Monitorar potássio regularmente. Evite alimentos muito ricos em potássio."},
-  {meds:["Clonazepam","Amitriptilina"],grav:"moderada",
-   desc:"Combinação aumenta sedação. Em idosos, eleva muito o risco de quedas e confusão mental.",
-   rec:"Usar com cuidado especial. Evitar dirigir. Informar o médico."},
-  {meds:["Diazepam","Amitriptilina"],grav:"moderada",
-   desc:"Combinação aumenta efeitos sedativos. Risco de quedas e confusão, especialmente em idosos.",
-   rec:"Usar com cautela. Monitorar sonolência e equilíbrio."},
-  {meds:["Furosemida","Digoxina"],grav:"moderada",
-   desc:"A furosemida pode causar perda de potássio, o que aumenta a toxicidade da digoxina.",
-   rec:"Monitorar potássio no sangue e nível de digoxina regularmente."},
-  {meds:["Glibenclamida","Ciprofloxacino"],grav:"moderada",
-   desc:"O ciprofloxacino pode alterar os níveis de glicemia quando usado com sulfonilureias.",
-   rec:"Monitorar glicemia mais frequentemente durante o tratamento com ciprofloxacino."},
-  {meds:["Gliclazida","Ciprofloxacino"],grav:"moderada",
-   desc:"O ciprofloxacino pode causar hipoglicemia ou hiperglicemia em pacientes usando sulfonilureias.",
-   rec:"Monitorar glicemia frequentemente."},
-  {meds:["Prednisona","Metformina"],grav:"moderada",
-   desc:"A prednisona eleva o açúcar no sangue, reduzindo o controle glicêmico pela metformina.",
-   rec:"Monitorar glicemia frequentemente."},
-  {meds:["Dexametasona","Metformina"],grav:"moderada",
-   desc:"A dexametasona eleva a glicemia, prejudicando o controle da metformina.",
-   rec:"Monitorar glicemia com mais frequência."},
-  {meds:["Fluconazol","Sinvastatina"],grav:"moderada",
-   desc:"Fluconazol pode aumentar os níveis de sinvastatina, elevando risco de efeitos musculares.",
-   rec:"Considerar dose menor ou estatina alternativa."},
-  {meds:["Fluconazol","Warfarina"],grav:"moderada",
-   desc:"Fluconazol aumenta o efeito anticoagulante da varfarina.",
-   rec:"Monitorar INR frequentemente."},
-  {meds:["Rivaroxabana","Ibuprofeno"],grav:"moderada",
-   desc:"Aumento do risco de sangramento.",
-   rec:"Evitar uso combinado prolongado."},
-  {meds:["Apixabana","Ibuprofeno"],grav:"moderada",
-   desc:"Risco aumentado de sangramento.",
-   rec:"Usar com cautela."},
-  {meds:["Apixabana","Diclofenaco"],grav:"moderada",
-   desc:"Risco aumentado de sangramento gastrointestinal.",
-   rec:"Evitar combinação se possível."},
-  {meds:["Levotiroxina","Omeprazol"],grav:"leve",
-   desc:"O omeprazol pode reduzir levemente a absorção da levotiroxina no intestino.",
-   rec:"Tome a levotiroxina em jejum, 30–60 min antes de qualquer outro medicamento."},
-  {meds:["Levotiroxina","Cálcio"],grav:"moderada",
-   desc:"Cálcio reduz a absorção de levotiroxina se tomados juntos.",
-   rec:"Separar por pelo menos 4 horas."},
-  {meds:["Levotiroxina","Ferro"],grav:"moderada",
-   desc:"Ferro reduz a absorção de levotiroxina se tomados juntos.",
-   rec:"Separar por pelo menos 4 horas."},
-  {meds:["Loratadina","Cetirizina"],grav:"leve",
-   desc:"Dois antialérgicos juntos não trazem benefício adicional e aumentam o risco de sonolência e boca seca.",
-   rec:"Use apenas um antialérgico por vez."},
-  {meds:["Omeprazol","Metformina"],grav:"leve",
-   desc:"O omeprazol pode reduzir levemente a absorção de vitamina B12, que já pode estar baixa com uso prolongado de metformina.",
-   rec:"Monitorar vitamina B12 anualmente com uso prolongado de ambos."},
-  {meds:["Ibuprofeno","Diclofenaco"],grav:"grave",
-   desc:"Dois AINEs juntos dobram o risco de sangramento gástrico, úlcera e danos renais sem benefício adicional.",
-   rec:"Nunca usar dois AINEs simultaneamente. Escolha apenas um."},
-  {meds:["Diclofenaco","Naproxeno"],grav:"grave",
-   desc:"Dois AINEs juntos aumentam muito o risco de úlcera, sangramento e dano renal.",
-   rec:"Nunca usar dois AINEs. Escolha apenas um."},
-  {meds:["Ibuprofeno","Naproxeno"],grav:"grave",
-   desc:"Dois AINEs simultaneamente sem benefício adicional e com risco gástrico e renal duplicado.",
-   rec:"Nunca usar dois AINEs juntos."},
-  {meds:["Prednisona","Diclofenaco"],grav:"grave",
-   desc:"Corticoide + anti-inflamatório juntos aumentam muito o risco de úlcera e sangramento.",
-   rec:"Evitar combinação. Usar protetor gástrico se inevitável."},
-  {meds:["Dexametasona","Diclofenaco"],grav:"grave",
-   desc:"Corticoide + AINE: risco muito elevado de úlcera e sangramento gastrointestinal.",
-   rec:"Evitar. Usar protetor gástrico se necessário."},
-  {meds:["Metronidazol","Clonazepam"],grav:"moderada",
-   desc:"Metronidazol pode aumentar os níveis e efeitos sedativos do clonazepam.",
-   rec:"Usar com cautela. Monitorar sedação excessiva."},
-  {meds:["Venlafaxina","Tramadol"],grav:"grave",
-   desc:"Risco elevado de síndrome serotoninérgica.",
-   rec:"Evitar combinação. Monitorar se inevitável."},
-  {meds:["Fluoxetina","Tramadol"],grav:"grave",
-   desc:"Síndrome serotoninérgica e convulsões.",
-   rec:"Evitar. Consultar médico para alternativa."},
-  {meds:["Escitalopram","Tramadol"],grav:"grave",
-   desc:"Risco de síndrome serotoninérgica.",
-   rec:"Evitar combinação."},
-  {meds:["Quetiapina","Clonazepam"],grav:"moderada",
-   desc:"Combinação aumenta sedação e pode causar hipotensão.",
-   rec:"Usar com cautela, especialmente em idosos."},
-  {meds:["Quetiapina","Diazepam"],grav:"moderada",
-   desc:"Sedação excessiva e risco de depressão respiratória.",
-   rec:"Evitar combinação se possível."},
-];
-
-// ═══════════════════════════════════════════════════
-// ESTADO
-// ═══════════════════════════════════════════════════
-let campos = [];
-let campoCount = 0;
-let perfilAtual = 'adulto';
-let stepTimer;
-
-// ═══════════════════════════════════════════════════
-// CAMPOS DE MEDICAMENTO
-// ═══════════════════════════════════════════════════
-function adicionarCampo() {
-  const id = ++campoCount;
-  const container = document.getElementById('meds-container');
-  const div = document.createElement('div');
-  div.className = 'med-card fadeUp';
-  div.id = 'campo-' + id;
-  div.innerHTML = `
-    <div class="med-card-label">💊 Medicamento ${id}</div>
-    <div class="input-wrap">
-      <input class="med-input" id="input-${id}"
-        placeholder="Digite o nome do remédio..."
-        oninput="onInput(${id},this.value)"
-        onkeydown="onKeyDown(event,${id})"
-        autocomplete="off">
-      <div class="autocomplete" id="ac-${id}"></div>
-    </div>
-    <div class="doses-wrap" id="doses-${id}">
-      <div class="doses-label">Qual a dose?</div>
-      <div class="doses-grid" id="doses-grid-${id}"></div>
-    </div>
-    <div class="med-selected" id="selected-${id}">
-      <div>
-        <div class="sel-name" id="sel-name-${id}"></div>
-        <div class="sel-dose" id="sel-dose-${id}"></div>
-      </div>
-      <button class="btn-trocar" onclick="trocar(${id})">Trocar</button>
-    </div>
-    ${id > 2 ? `<button onclick="removerCampo(${id})" style="margin-top:10px;background:none;border:none;color:var(--muted);font-size:.78rem;cursor:pointer;font-family:inherit">✕ Remover</button>` : ''}
-  `;
-  container.appendChild(div);
-  campos.push({id, med:null, dose:null, acIndex:-1});
+// ── BUSCA INTELIGENTE ──────────────────────────────────
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m)return n;if(!n)return m;
+  const dp=Array.from({length:m+1},(_,i)=>[i]);
+  for(let j=1;j<=n;j++)dp[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)
+    dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+  return dp[m][n];
 }
-
-function removerCampo(id) {
-  document.getElementById('campo-'+id).remove();
-  campos = campos.filter(c => c.id !== id);
-}
-
-// ═══════════════════════════════════════════════════
-// AUTOCOMPLETE
-// ═══════════════════════════════════════════════════
-function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
-
-function onInput(id, val) {
-  const c = campos.find(c => c.id === id);
-  if (!c) return;
-  c.med = null; c.dose = null; c.acIndex = -1;
-  document.getElementById('doses-'+id).style.display = 'none';
-  document.getElementById('selected-'+id).style.display = 'none';
-  if (val.length < 2) { document.getElementById('ac-'+id).style.display = 'none'; return; }
-  const n = norm(val);
-  const res = MEDS.filter(m => norm(m.nome).includes(n) || (m.sinonimos||[]).some(s => norm(s).includes(n))).slice(0,6);
-  const ac = document.getElementById('ac-'+id);
-  if (!res.length) { ac.style.display = 'none'; return; }
-  ac.innerHTML = res.map((m,i) =>
-    `<div class="ac-item" id="aci-${id}-${i}" onclick="selecionarMed(${id},'${m.nome.replace(/'/g,"\\'")}')">
-      💊 <div><strong>${m.nome}</strong><span class="ac-class">${m.classe}</span></div>
-    </div>`
-  ).join('');
-  ac.style.display = 'block';
-}
-
-function onKeyDown(e, id) {
-  const ac = document.getElementById('ac-'+id);
-  const items = ac.querySelectorAll('.ac-item');
-  const c = campos.find(c => c.id === id);
-  if (!c) return;
-  if (e.key === 'ArrowDown') { c.acIndex = Math.min(c.acIndex+1,items.length-1); items.forEach((el,i) => el.classList.toggle('selected',i===c.acIndex)); e.preventDefault(); }
-  else if (e.key === 'ArrowUp') { c.acIndex = Math.max(c.acIndex-1,0); items.forEach((el,i) => el.classList.toggle('selected',i===c.acIndex)); e.preventDefault(); }
-  else if (e.key === 'Enter' && c.acIndex >= 0) { const nome = items[c.acIndex]?.querySelector('strong')?.textContent; if (nome) selecionarMed(id,nome); e.preventDefault(); }
-}
-
-function selecionarMed(id, nome) {
-  const c = campos.find(c => c.id === id);
-  if (!c) return;
-  const med = MEDS.find(m => m.nome === nome);
-  if (!med) return;
-  c.med = med; c.dose = null;
-  document.getElementById('ac-'+id).style.display = 'none';
-  document.getElementById('input-'+id).value = '';
-  if (med.doses.length === 1) {
-    selecionarDose(id, med.doses[0], null);
-  } else {
-    document.getElementById('doses-grid-'+id).innerHTML = med.doses.map(d =>
-      `<button class="dose-btn" onclick="selecionarDose(${id},'${d}',this)">${d}</button>`
-    ).join('');
-    document.getElementById('doses-'+id).style.display = 'block';
-    document.getElementById('selected-'+id).style.display = 'none';
+function scoreMatch(query,med){
+  const q=norm(query);
+  if(q.length<2)return Infinity;
+  const targets=[norm(med.nome),...(med.sinonimos||[]).map(norm)];
+  for(const t of targets)if(t.includes(q))return 0;
+  if(q.length<4)return Infinity;
+  const thr=q.length<=5?1:2;
+  let best=Infinity;
+  for(const t of targets){
+    for(let i=0;i<=t.length-q.length+thr;i++){
+      const sl=t.substr(i,q.length);
+      if(sl.length>=q.length-thr){const d=levenshtein(q,sl);if(d<=thr)best=Math.min(best,d);}
+    }
+    const d=levenshtein(q,t.substr(0,q.length));
+    if(d<=thr)best=Math.min(best,d);
   }
+  return best;
+}
+function matchedSynonym(query,med){
+  const q=norm(query);
+  if(norm(med.nome).includes(q))return null;
+  for(const s of(med.sinonimos||[]))if(norm(s).includes(q))return s;
+  return null;
 }
 
-function selecionarDose(id, dose, btn) {
-  const c = campos.find(c => c.id === id);
-  if (!c) return;
-  c.dose = dose;
-  if (btn) { document.querySelectorAll(`#doses-grid-${id} .dose-btn`).forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
-  setTimeout(() => {
-    document.getElementById('doses-'+id).style.display = 'none';
-    document.getElementById('sel-name-'+id).textContent = c.med.nome;
-    document.getElementById('sel-dose-'+id).textContent = dose;
-    document.getElementById('selected-'+id).style.display = 'flex';
-  }, 200);
-}
+// ── BASE DE MEDICAMENTOS (170+) ────────────────────────
+const MEDS=[
+// ══ ANALGÉSICOS / ANTITÉRMICOS ══
+{nome:"Dipirona",sinonimos:["novalgina","metamizol","analgin","novaldigina","doril","magnopyrol","dipirona sodica"],classe:"Analgésico / Antipirético",doses:["500mg","1g"],para_que:"Alivia dores moderadas a intensas e febre.",efeitos:["Reação alérgica (rara)","Queda de pressão se injetado","Agranulocitose (muito rara)"],como_tomar:"500mg a 1g a cada 6–8h. Máximo 4g/dia.",gravidez:"cautela",crianca:"seguro",idoso:"cautela",amamentando:"cautela"},
+{nome:"Paracetamol",sinonimos:["tylenol","acetaminofeno","benegrip","gripetol","cibalena"],classe:"Analgésico / Antipirético",doses:["500mg","750mg","1g"],para_que:"Alivia dores leves a moderadas e febre. Não é anti-inflamatório.",efeitos:["Hepatotoxicidade em superdose","Raramente reação alérgica"],como_tomar:"500mg a 1g a cada 4–6h. Máximo 4g/dia (3g/dia em idosos).",gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"seguro"},
+{nome:"Ibuprofeno",sinonimos:["advil","alivium","brufen","ibupirac","buprovil","motrin","nurofen"],classe:"Anti-inflamatório (AINE)",doses:["200mg","400mg","600mg"],para_que:"Anti-inflamatório, analgésico e antipirético.",efeitos:["Dor de estômago","Azia","Náusea","Aumento da pressão","Retenção de líquidos"],como_tomar:"200 a 600mg a cada 6–8h com alimentos. Máximo 2,4g/dia.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Aspirina",sinonimos:["aas","aas 100","aas 500","acido acetilsalicilico","ácido acetilsalicílico","cardioaspirina","aspirina infantil","ecotrin","acido salicilico"],classe:"Antiagregante / Anti-inflamatório",doses:["100mg","500mg"],para_que:"Em doses baixas previne infarto e AVC. Em doses maiores é anti-inflamatório.",efeitos:["Sangramento gástrico","Zumbido em doses altas","Reação alérgica"],como_tomar:"Prevenção CV: 100mg/dia com refeição. Dor/febre: 500–1000mg a cada 4–6h.",gravidez:"cautela",crianca:"contraindicado",idoso:"cautela",amamentando:"cautela"},
+{nome:"Diclofenaco",sinonimos:["voltaren","cataflam","diclo","biofenac","artren","flector","neodol"],classe:"Anti-inflamatório (AINE)",doses:["50mg","75mg","100mg"],para_que:"Anti-inflamatório para dores musculares, artrite e cólicas.",efeitos:["Dor de estômago","Azia","Náusea","Risco cardiovascular"],como_tomar:"50 a 100mg 2–3x/dia com alimentos. Máximo 150mg/dia.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Naproxeno",sinonimos:["flanax","naproxeno sodico","naprosyn","naproxen"],classe:"Anti-inflamatório (AINE)",doses:["250mg","500mg"],para_que:"Anti-inflamatório para dores musculares, cólicas menstruais e artrite.",efeitos:["Dor de estômago","Azia","Tontura","Retenção de líquidos"],como_tomar:"250 a 500mg 2x/dia com alimentos. Máximo 1250mg/dia.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Meloxicam",sinonimos:["movatec","meloxen","mobic","movalis","flexocam"],classe:"Anti-inflamatório (AINE / COX-2 Preferencial)",doses:["7,5mg","15mg"],para_que:"Anti-inflamatório para artrite, artrose e dores musculares. Menor risco gástrico que outros AINEs.",efeitos:["Dor abdominal","Náusea","Tontura","Retenção de líquidos"],como_tomar:"7,5 a 15mg uma vez ao dia com alimentos.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Nimesulida",sinonimos:["nimesulida","nimedex","nisulid","scaflan","nimesil"],classe:"Anti-inflamatório (AINE)",doses:["100mg"],para_que:"Anti-inflamatório para dores e inflamações. Ação rápida.",efeitos:["Dor de estômago","Náusea","Hepatotoxicidade (raro)"],como_tomar:"100mg 2x/dia após refeições. Máximo 15 dias de uso.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Celecoxibe",sinonimos:["celebra","celebrex"],classe:"Anti-inflamatório (COX-2 Seletivo)",doses:["100mg","200mg"],para_que:"Anti-inflamatório com menos risco gástrico. Para artrite e dor crônica.",efeitos:["Dor abdominal","Risco cardiovascular","Retenção de líquidos"],como_tomar:"100 a 200mg 1–2x/dia.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Cetoprofeno",sinonimos:["profenid","ketoprofeno","orudis","bi-profenid"],classe:"Anti-inflamatório (AINE)",doses:["50mg","100mg","150mg"],para_que:"Anti-inflamatório para dores musculares e artrite.",efeitos:["Dor de estômago","Azia","Náusea"],como_tomar:"50 a 100mg 2–3x/dia com alimentos. Máximo 300mg/dia.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Indometacina",sinonimos:["indocid","indometacin","indometacina"],classe:"Anti-inflamatório (AINE)",doses:["25mg","50mg"],para_que:"Anti-inflamatório potente para artrite, gota aguda e dor.",efeitos:["Dor de estômago intensa","Dor de cabeça","Tontura","Retenção de líquidos"],como_tomar:"25 a 50mg 2–3x/dia com alimentos. Máximo 200mg/dia.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Tramadol",sinonimos:["tramal","tramal retard","cronodol","ultram"],classe:"Analgésico Opioide",doses:["50mg","75mg","100mg"],para_que:"Dor moderada a intensa.",efeitos:["Náusea","Tontura","Sonolência","Constipação","Convulsão (raro)"],como_tomar:"50 a 100mg a cada 4–6h. Máximo 400mg/dia.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Codeína",sinonimos:["codeina","codein","tylenol com codeina"],classe:"Analgésico Opioide",doses:["15mg","30mg","60mg"],para_que:"Dor moderada. Também antitussígeno.",efeitos:["Constipação","Náusea","Sonolência","Dependência"],como_tomar:"15 a 60mg a cada 4–6h.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Morfina",sinonimos:["dimorf","morfelan","morphine"],classe:"Analgésico Opioide Forte",doses:["10mg","30mg","60mg"],para_que:"Analgésico potente para dor intensa (câncer, pós-operatório).",efeitos:["Constipação","Náusea","Sonolência","Dependência","Depressão respiratória"],como_tomar:"Dose individualizada. Liberação imediata: 4–6h. Prolongada: 12–24h.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Colchicina",sinonimos:["colcrys","colchicum"],classe:"Antigota",doses:["0,5mg"],para_que:"Trata e previne crises de gota.",efeitos:["Diarreia","Náusea","Vômito","Dor abdominal"],como_tomar:"0,5 a 1mg na crise, depois 0,5mg 1–2x/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Alopurinol",sinonimos:["ziloric","zyloric","allopurinol"],classe:"Redutor de Ácido Úrico",doses:["100mg","300mg"],para_que:"Previne crises de gota. Reduz produção de ácido úrico.",efeitos:["Erupção cutânea","Náusea","Diarreia"],como_tomar:"100 a 300mg/dia após refeições. Beber bastante água.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+// ══ COMBINADOS / ANTIESPASMÓDICOS ══
+{nome:"Dorflex",sinonimos:["dorflex on","dorflex relax"],classe:"Analgésico Combinado",doses:["comprimido"],para_que:"Dipirona + cafeína + orfenadrina. Para dores musculares e de cabeça.",efeitos:["Sonolência","Boca seca","Náusea"],como_tomar:"1 comprimido a cada 6–8h. Máximo 4/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Neosaldina",sinonimos:["neo saldina"],classe:"Analgésico Combinado",doses:["comprimido"],para_que:"Dipirona + isometepteno + cafeína. Para enxaqueca e cefaleia.",efeitos:["Sonolência","Náusea","Taquicardia"],como_tomar:"1–2 comprimidos a cada 4–6h. Máximo 6/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Buscopan",sinonimos:["escopolamina","hioscina","butilescopolamina","buscapina"],classe:"Antiespasmódico",doses:["10mg","20mg"],para_que:"Alivia cólicas abdominais e menstruais.",efeitos:["Boca seca","Visão borrada","Constipação"],como_tomar:"10 a 20mg 3–5x/dia conforme necessidade.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+// ══ ANTIBIÓTICOS / ANTIINFECCIOSOS ══
+{nome:"Amoxicilina",sinonimos:["amoxil","amoxicillin","amoxil bd","megamox","flemoxin"],classe:"Antibiótico (Penicilina)",doses:["250mg","500mg","875mg"],para_que:"Infecções bacterianas respiratórias, urinárias e dentárias.",efeitos:["Diarreia","Náusea","Reação alérgica","Candidíase"],como_tomar:"500mg a cada 8h ou 875mg a cada 12h. Completar o ciclo.",gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
+{nome:"Azitromicina",sinonimos:["zithromax","azi","azitro","zitromax","aztrin","antibiotico 3 dias"],classe:"Antibiótico (Macrolídeo)",doses:["250mg","500mg"],para_que:"Antibiótico de ciclo curto. Pneumonia, sinusite, infecções de pele.",efeitos:["Diarreia","Náusea","Dor abdominal","Alteração do ritmo cardíaco"],como_tomar:"500mg no 1º dia, depois 250mg por mais 4 dias.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Claritromicina",sinonimos:["klaricid","claritromicina","klacid","biaxin","clarithromycin"],classe:"Antibiótico (Macrolídeo)",doses:["250mg","500mg"],para_que:"Infecções respiratórias, sinusite e H. pylori.",efeitos:["Náusea","Diarreia","Alteração do paladar","Prolongamento QT"],como_tomar:"250 a 500mg 2x/dia por 7–14 dias com ou sem alimentos.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Ciprofloxacino",sinonimos:["cipro","ciproflox","ciprobay","quintor"],classe:"Antibiótico (Fluoroquinolona)",doses:["250mg","500mg","750mg"],para_que:"Antibiótico de amplo espectro. Infecções urinárias, pulmonares e intestinais.",efeitos:["Náusea","Dor de cabeça","Tendinite (rara)","Fotossensibilidade"],como_tomar:"250 a 750mg a cada 12h. Tomar com bastante água.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Metronidazol",sinonimos:["flagyl","metronidazole","flagenase"],classe:"Antibiótico / Antiparasitário",doses:["250mg","400mg","500mg"],para_que:"Infecções por bactérias anaeróbias e parasitas (giárdia, tricomoníase).",efeitos:["Náusea","Gosto metálico na boca","Tontura","Reação grave com álcool"],como_tomar:"250 a 500mg a cada 8h com alimentos. Evitar álcool durante e 48h após.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Doxiciclina",sinonimos:["vibramicina","doxiciclina","doryx","vibra-tabs","doxycycline"],classe:"Antibiótico (Tetraciclina)",doses:["100mg"],para_que:"Acne, infecções respiratórias, ISTs e doenças transmitidas por vetores.",efeitos:["Náusea","Fotossensibilidade","Esofagite","Candidíase"],como_tomar:"100mg 2x/dia com bastante água e alimentos. Não deitar por 30min após.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Sulfametoxazol-Trimetoprima",sinonimos:["bactrim","sulfametoxazol","trimetoprima","septra","bactrim f","smx-tmp"],classe:"Antibiótico (Sulfonamida)",doses:["400/80mg","800/160mg"],para_que:"Infecções urinárias, respiratórias e por Pneumocystis.",efeitos:["Náusea","Erupção cutânea","Fotossensibilidade","Dano renal (raro)"],como_tomar:"800/160mg 2x/dia por 7–14 dias com bastante água.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Clindamicina",sinonimos:["dalacin","clindamicina","cleocin","clindacin"],classe:"Antibiótico (Lincosamida)",doses:["150mg","300mg"],para_que:"Infecções por anaeróbios, pele, ossos e articulações.",efeitos:["Diarreia (risco de C. difficile)","Náusea","Dor abdominal"],como_tomar:"150 a 300mg a cada 6h. Tomar com bastante água.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Nitrofurantoína",sinonimos:["macrodantina","macrobid","nitrofurantoina"],classe:"Antibiótico (Infecção Urinária)",doses:["50mg","100mg"],para_que:"Infecções do trato urinário. Ação específica na urina.",efeitos:["Náusea","Dor de cabeça","Coloração amarela da urina"],como_tomar:"50 a 100mg 4x/dia com alimentos. Máximo 7 dias.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Fluconazol",sinonimos:["diflucan","zoltec","fluconal","candizol"],classe:"Antifúngico",doses:["50mg","100mg","150mg","200mg"],para_que:"Candidíase e outras infecções fúngicas.",efeitos:["Náusea","Dor de cabeça","Erupção cutânea"],como_tomar:"150mg dose única para candidíase vaginal. 50–400mg/dia para outras infecções.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Aciclovir",sinonimos:["zovirax","acyclovir","acivir","herpesvir"],classe:"Antiviral",doses:["200mg","400mg","800mg"],para_que:"Herpes labial, genital e varicela-zoster.",efeitos:["Náusea","Dor de cabeça","Diarreia"],como_tomar:"200 a 800mg 5x/dia. Começar o mais cedo possível.",gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"cautela"},
+{nome:"Nistatina",sinonimos:["mycostatin","micostatin","nistatin"],classe:"Antifúngico",doses:["100.000UI/ml"],para_que:"Candidíase oral, vaginal e de pele.",efeitos:["Irritação local","Náusea (oral)"],como_tomar:"Oral: bochechar e engolir 4x/dia. Creme: aplicar 2x/dia.",gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
+// ══ GASTRO ══
+{nome:"Omeprazol",sinonimos:["losec","peprazol","gastrium","prilosec","proton","prazol"],classe:"Protetor gástrico (IBP)",doses:["10mg","20mg","40mg"],para_que:"Reduz ácido no estômago. Úlceras, refluxo e gastrite.",efeitos:["Dor de cabeça","Diarreia","Deficiência de magnésio (uso prolongado)"],como_tomar:"20 a 40mg/dia em jejum 30–60min antes do café.",gravidez:"cautela",crianca:"cautela",idoso:"seguro",amamentando:"cautela"},
+{nome:"Pantoprazol",sinonimos:["pantozol","pantoc","tecta","protonix"],classe:"Protetor gástrico (IBP)",doses:["20mg","40mg"],para_que:"Similar ao omeprazol. Protege o estômago e trata úlceras.",efeitos:["Dor de cabeça","Diarreia","Flatulência"],como_tomar:"20 a 40mg/dia em jejum. Engolir inteiro.",gravidez:"cautela",crianca:"cautela",idoso:"seguro",amamentando:"cautela"},
+{nome:"Esomeprazol",sinonimos:["nexium","esomeprazol","esomeprazole"],classe:"Protetor gástrico (IBP)",doses:["20mg","40mg"],para_que:"Isômero do omeprazol. Tratamento de refluxo e úlceras.",efeitos:["Dor de cabeça","Náusea","Diarreia"],como_tomar:"20 a 40mg/dia em jejum.",gravidez:"cautela",crianca:"cautela",idoso:"seguro",amamentando:"cautela"},
+{nome:"Ranitidina",sinonimos:["antak","ranitidina","zantac","label"],classe:"Antiácido (Bloqueador H2)",doses:["150mg","300mg"],para_que:"Reduz ácido gástrico. Para úlceras e refluxo.",efeitos:["Dor de cabeça","Tontura","Constipação"],como_tomar:"150mg 2x/dia ou 300mg à noite.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Simeticona",sinonimos:["luftal","epocler","mylicon","dimeticona"],classe:"Antiflatulento",doses:["40mg","75mg","150mg"],para_que:"Elimina gases intestinais.",efeitos:["Raramente reação alérgica"],como_tomar:"40 a 150mg após refeições e ao deitar.",gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
+{nome:"Lactulose",sinonimos:["lactulona","duphalac","laxadilac"],classe:"Laxante Osmótico",doses:["10g/15ml"],para_que:"Trata constipação intestinal.",efeitos:["Gases","Distensão abdominal","Diarreia (em excesso)"],como_tomar:"15 a 45ml/dia. Ajustar dose até 2–3 evacuações moles/dia.",gravidez:"seguro",crianca:"seguro",idoso:"seguro",amamentando:"seguro"},
+{nome:"Loperamida",sinonimos:["imosec","imodium","diasec"],classe:"Antidiarreico",doses:["2mg"],para_que:"Interrompe diarreia aguda.",efeitos:["Constipação","Tontura","Náusea"],como_tomar:"4mg na primeira dose, depois 2mg após cada evacuação. Máximo 16mg/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Domperidona",sinonimos:["motilium","peridon","domperidone"],classe:"Antiêmético / Procinético",doses:["10mg"],para_que:"Previne náusea e vômito. Acelera esvaziamento gástrico.",efeitos:["Boca seca","Dor de cabeça","Arritmia (raro)"],como_tomar:"10mg 3x/dia 15–30min antes das refeições.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Ondansetrona",sinonimos:["vonau","zofran","onsetron"],classe:"Antiêmético",doses:["4mg","8mg"],para_que:"Previne náusea e vômito por quimioterapia ou pós-operatório.",efeitos:["Dor de cabeça","Constipação","Tontura"],como_tomar:"4 a 8mg 2–3x/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+// ══ CARDIOVASCULAR / HIPERTENSÃO ══
+{nome:"Losartana",sinonimos:["cozaar","losartan","lorista","hyzaar"],classe:"Anti-hipertensivo (BRA)",doses:["25mg","50mg","100mg"],para_que:"Trata pressão alta e protege os rins em diabéticos.",efeitos:["Tontura","Hipotensão","Excesso de potássio"],como_tomar:"25 a 100mg/dia. Sempre no mesmo horário.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Valsartana",sinonimos:["diovan","valsartan","tareg"],classe:"Anti-hipertensivo (BRA)",doses:["80mg","160mg","320mg"],para_que:"Trata pressão alta e insuficiência cardíaca.",efeitos:["Tontura","Hipotensão","Excesso de potássio"],como_tomar:"80 a 320mg/dia.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Captopril",sinonimos:["capoten","capotena","tensoprel"],classe:"Anti-hipertensivo (IECA)",doses:["12,5mg","25mg","50mg"],para_que:"Pressão alta, insuficiência cardíaca e proteção renal.",efeitos:["Tosse seca","Hipotensão","Excesso de potássio","Angioedema (raro)"],como_tomar:"12,5 a 50mg 2–3x/dia, 1h antes das refeições.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Enalapril",sinonimos:["vasotec","renitec","eupressin"],classe:"Anti-hipertensivo (IECA)",doses:["5mg","10mg","20mg"],para_que:"Pressão alta e insuficiência cardíaca.",efeitos:["Tosse seca","Tontura","Hipotensão","Excesso de potássio"],como_tomar:"5 a 40mg/dia em 1–2 doses.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Ramipril",sinonimos:["triatec","ramipril","altace","cardace"],classe:"Anti-hipertensivo (IECA)",doses:["2,5mg","5mg","10mg"],para_que:"Pressão alta, insuficiência cardíaca e proteção cardiovascular pós-infarto.",efeitos:["Tosse seca","Tontura","Hipotensão","Angioedema (raro)"],como_tomar:"2,5 a 10mg/dia em 1–2 doses.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Amlodipino",sinonimos:["norvasc","amlodipina","amlodipine","coroval","pressat"],classe:"Anti-hipertensivo (Bloqueador de Cálcio)",doses:["2,5mg","5mg","10mg"],para_que:"Pressão alta e angina.",efeitos:["Inchaço nos tornozelos","Rubor facial","Palpitações","Tontura"],como_tomar:"2,5 a 10mg/dia. Qualquer horário.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Nifedipino",sinonimos:["adalat","procardia","adalat oros","nifedipine"],classe:"Anti-hipertensivo (Bloqueador de Cálcio)",doses:["10mg","20mg","30mg","60mg"],para_que:"Pressão alta e angina.",efeitos:["Inchaço nos tornozelos","Rubor facial","Dor de cabeça","Palpitações"],como_tomar:"30–60mg/dia (formulação de ação prolongada) ou 10–20mg 3x/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Diltiazem",sinonimos:["cardizem","dilacor","tiazac","diltiazem"],classe:"Anti-hipertensivo (Bloqueador de Cálcio)",doses:["30mg","60mg","90mg","120mg"],para_que:"Pressão alta, angina e arritmias.",efeitos:["Bradicardia","Inchaço","Tontura","Constipação"],como_tomar:"30 a 90mg 3–4x/dia ou formulação prolongada 1–2x/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Verapamil",sinonimos:["isoptin","verapamil","calan","veralan"],classe:"Anti-hipertensivo (Bloqueador de Cálcio)",doses:["40mg","80mg","120mg","240mg"],para_que:"Pressão alta, angina e arritmias supraventriculares.",efeitos:["Constipação","Bradicardia","Tontura","Inchaço"],como_tomar:"40 a 120mg 3x/dia ou formulação prolongada 1x/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Atenolol",sinonimos:["tenormin","atenol","ablok"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["25mg","50mg","100mg"],para_que:"Pressão alta, angina e arritmias.",efeitos:["Bradicardia","Fadiga","Extremidades frias","Disfunção erétil"],como_tomar:"25 a 100mg/dia. Não interromper abruptamente.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Carvedilol",sinonimos:["coreg","dilatrend","carvid"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["3,125mg","6,25mg","12,5mg","25mg"],para_que:"Insuficiência cardíaca, pressão alta e pós-infarto.",efeitos:["Bradicardia","Tontura","Fadiga","Hipotensão ao levantar"],como_tomar:"Iniciar com 3,125mg 2x/dia. Aumentar gradualmente. Tomar com alimentos.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Propranolol",sinonimos:["inderal","propanolol","novapress"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["10mg","20mg","40mg","80mg"],para_que:"Pressão alta, ansiedade, tremor e prevenção de enxaqueca.",efeitos:["Bradicardia","Fadiga","Extremidades frias","Sonhos vívidos"],como_tomar:"10 a 80mg 2–3x/dia. Não interromper abruptamente.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Metoprolol",sinonimos:["seloken","selozok","toprol","lopresor"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["25mg","50mg","100mg"],para_que:"Pressão alta, angina, insuficiência cardíaca e arritmias.",efeitos:["Bradicardia","Fadiga","Tontura"],como_tomar:"25 a 200mg/dia em 1–2 doses.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Bisoprolol",sinonimos:["concor","bisoprolol","bisoprolo"],classe:"Anti-hipertensivo (Betabloqueador)",doses:["2,5mg","5mg","10mg"],para_que:"Pressão alta e insuficiência cardíaca.",efeitos:["Bradicardia","Fadiga","Tontura"],como_tomar:"2,5 a 10mg/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Amiodarona",sinonimos:["ancoron","amiodarona","cordarone","amiodarone"],classe:"Antiarrítmico",doses:["100mg","200mg"],para_que:"Trata arritmias graves. Fibrilação atrial e ventricular.",efeitos:["Disfunção tireoidiana","Fotossensibilidade","Toxicidade pulmonar","Hepatotoxicidade"],como_tomar:"200mg/dia de manutenção após carga. Monitorar tireoide, fígado e pulmão.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Digoxina",sinonimos:["lanoxin","digitalis"],classe:"Cardiotônico",doses:["0,125mg","0,25mg"],para_que:"Fortalece contração cardíaca e controla arritmias. Margem terapêutica estreita.",efeitos:["Náusea","Vômito","Visão amarelada","Bradicardia","Toxicidade em superdose"],como_tomar:"Dose individualizada. Monitorar nível no sangue.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Furosemida",sinonimos:["lasix","furosemide","furix","seguril"],classe:"Diurético",doses:["20mg","40mg"],para_que:"Elimina excesso de líquido. Insuficiência cardíaca e pressão alta.",efeitos:["Perda de potássio","Desidratação","Tontura ao levantar","Câimbras"],como_tomar:"20 a 80mg/dia, preferencialmente de manhã.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Espironolactona",sinonimos:["aldactone","spironolactone"],classe:"Diurético (Poupador de Potássio)",doses:["25mg","50mg","100mg"],para_que:"Diurético que poupa potássio. Insuficiência cardíaca.",efeitos:["Excesso de potássio","Ginecomastia em homens","Distúrbios menstruais"],como_tomar:"25 a 100mg/dia com alimentos. Monitorar potássio.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Hidroclorotiazida",sinonimos:["hctz","hydrochlorothiazide","moduretic"],classe:"Diurético Tiazídico",doses:["12,5mg","25mg","50mg"],para_que:"Diurético para pressão alta e inchaço.",efeitos:["Perda de potássio","Aumento de ácido úrico","Fotossensibilidade"],como_tomar:"12,5 a 50mg/dia pela manhã.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Varfarina",sinonimos:["coumadin","marevan","warfarin","warfarina"],classe:"Anticoagulante",doses:["1mg","2mg","2,5mg","5mg"],para_que:"Previne coágulos. Fibrilação atrial, trombose e válvulas mecânicas.",efeitos:["Sangramento","Hematomas","Hemorragia"],como_tomar:"Dose pelo INR. Sempre no mesmo horário. Monitorar INR regularmente.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Clopidogrel",sinonimos:["plavix","trombex","iscover","clopirel"],classe:"Antiagregante Plaquetário",doses:["75mg"],para_que:"Previne coágulos. Pós-infarto, AVC e stent.",efeitos:["Sangramento","Hematomas","Dor abdominal"],como_tomar:"75mg/dia. Não interromper sem autorização médica.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Enoxaparina",sinonimos:["clexane","lovenox"],classe:"Anticoagulante (HBPM)",doses:["20mg","40mg","60mg","80mg"],para_que:"Previne e trata trombose.",efeitos:["Sangramento","Hematoma no local","Trombocitopenia"],como_tomar:"40mg SC/dia para prevenção. 1mg/kg 2x/dia para tratamento.",gravidez:"seguro",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Rivaroxabana",sinonimos:["xarelto","rivaroxaban"],classe:"Anticoagulante Oral Direto",doses:["10mg","15mg","20mg"],para_que:"Previne AVC, trombose e embolia.",efeitos:["Sangramento","Náusea","Tontura"],como_tomar:"10 a 20mg/dia com alimentos.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Apixabana",sinonimos:["eliquis","apixaban"],classe:"Anticoagulante Oral Direto",doses:["2,5mg","5mg"],para_que:"Previne AVC em fibrilação atrial.",efeitos:["Sangramento","Náusea","Anemia"],como_tomar:"2,5 a 5mg 2x/dia.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+// ══ COLESTEROL ══
+{nome:"Sinvastatina",sinonimos:["zocor","simvastatin","sivastatina"],classe:"Colesterol (Estatina)",doses:["10mg","20mg","40mg"],para_que:"Reduz colesterol LDL e triglicerídeos.",efeitos:["Dores musculares","Fraqueza muscular","Elevação de enzimas hepáticas"],como_tomar:"10 a 40mg/noite. Evitar suco de grapefruit.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Atorvastatina",sinonimos:["lipitor","citalor","atorvastatin","zarator"],classe:"Colesterol (Estatina)",doses:["10mg","20mg","40mg","80mg"],para_que:"Reduz colesterol LDL e triglicerídeos.",efeitos:["Dores musculares","Dor de cabeça","Diarreia"],como_tomar:"10 a 80mg/dia, qualquer horário.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Rosuvastatina",sinonimos:["crestor","rosuvastatin","vivacor","rosucor"],classe:"Colesterol (Estatina)",doses:["5mg","10mg","20mg","40mg"],para_que:"Reduz colesterol LDL e triglicerídeos. Muito potente.",efeitos:["Dores musculares","Dor de cabeça","Náusea"],como_tomar:"5 a 40mg/dia, qualquer horário.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Fenofibrato",sinonimos:["lipidil","tricor","lofibra","fenofibrate"],classe:"Colesterol (Fibrato)",doses:["145mg","200mg"],para_que:"Reduz triglicerídeos principalmente.",efeitos:["Dores musculares","Dor abdominal","Cálculos biliares"],como_tomar:"145 a 200mg/dia com alimentos.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Ezetimiba",sinonimos:["zetia","ezetimibe","ezetrol"],classe:"Colesterol (Inibidor de Absorção)",doses:["10mg"],para_que:"Reduz absorção de colesterol no intestino.",efeitos:["Diarreia","Dor abdominal","Fadiga"],como_tomar:"10mg/dia.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+// ══ DIABETES ══
+{nome:"Metformina",sinonimos:["glifage","glucoformin","dimefor","glucophage","glifage xr","metformin"],classe:"Antidiabético (Biguanida)",doses:["500mg","850mg","1g"],para_que:"Principal medicamento para diabetes tipo 2.",efeitos:["Náusea","Diarreia","Dor abdominal","Deficiência de vitamina B12"],como_tomar:"500 a 1000mg 2x/dia junto às refeições.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Glibenclamida",sinonimos:["daonil","euglucon","glyburide","diabeta"],classe:"Antidiabético (Sulfonilureia)",doses:["5mg"],para_que:"Estimula o pâncreas a produzir insulina.",efeitos:["Hipoglicemia","Ganho de peso","Náusea"],como_tomar:"2,5 a 20mg/dia com café da manhã.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Gliclazida",sinonimos:["diamicron","diamicron mr","gliclazide"],classe:"Antidiabético (Sulfonilureia)",doses:["30mg","60mg","80mg"],para_que:"Estimula produção de insulina. Para diabetes tipo 2.",efeitos:["Hipoglicemia","Ganho de peso","Náusea"],como_tomar:"30 a 120mg/dia com café da manhã.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Sitagliptina",sinonimos:["januvia","janumet"],classe:"Antidiabético (Inibidor DPP-4)",doses:["25mg","50mg","100mg"],para_que:"Aumenta insulina quando glicose está alta. Baixo risco de hipoglicemia.",efeitos:["Dor de cabeça","Nasofaringite","Dor abdominal"],como_tomar:"100mg/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Empagliflozina",sinonimos:["jardiance","empagliflozin"],classe:"Antidiabético (Inibidor SGLT2)",doses:["10mg","25mg"],para_que:"Elimina glicose pela urina. Protege coração e rins.",efeitos:["Infecções urinárias","Candidíase","Desidratação"],como_tomar:"10 a 25mg/dia pela manhã.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Dapagliflozina",sinonimos:["forxiga","dapagliflozin"],classe:"Antidiabético (Inibidor SGLT2)",doses:["10mg"],para_que:"Elimina glicose pela urina. Também protege coração e rins.",efeitos:["Infecções urinárias","Candidíase","Desidratação"],como_tomar:"10mg/dia pela manhã.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Liraglutida",sinonimos:["victoza","saxenda"],classe:"Antidiabético (Análogo de GLP-1)",doses:["0,6mg","1,2mg","1,8mg"],para_que:"Diabetes tipo 2 e obesidade. Reduz apetite e protege o coração.",efeitos:["Náusea","Vômito","Diarreia","Pancreatite (raro)"],como_tomar:"Injeção SC/dia. Iniciar com 0,6mg e aumentar gradualmente.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Insulina NPH",sinonimos:["insulina","nph","humulin n","novolin n","insulina humana"],classe:"Antidiabético (Insulina)",doses:["100UI/ml"],para_que:"Reposição de insulina para diabetes tipo 1 e tipo 2.",efeitos:["Hipoglicemia","Ganho de peso","Reação no local"],como_tomar:"Aplicar subcutânea conforme prescrição. Monitorar glicemia.",gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"seguro"},
+{nome:"Insulina Glargina",sinonimos:["lantus","basaglar","toujeo","insulin glargine"],classe:"Antidiabético (Insulina Basal)",doses:["100UI/ml"],para_que:"Insulina basal de ação prolongada (24h). Diabetes tipo 1 e 2.",efeitos:["Hipoglicemia","Ganho de peso","Reação no local"],como_tomar:"Aplicar SC 1x/dia sempre no mesmo horário.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+// ══ NEUROLÓGICO / PSIQUIÁTRICO ══
+{nome:"Clonazepam",sinonimos:["rivotril","klonopin","clonotril","rivotril gotas"],classe:"Ansiolítico / Anticonvulsivante",doses:["0,5mg","1mg","2mg"],para_que:"Epilepsia, transtorno de pânico e ansiedade.",efeitos:["Sonolência","Tontura","Dependência física","Comprometimento cognitivo"],como_tomar:"0,5 a 2mg 2–3x/dia. Não interromper abruptamente.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Diazepam",sinonimos:["valium","dienpax","compaz","ansilive"],classe:"Ansiolítico (Benzodiazepínico)",doses:["2mg","5mg","10mg"],para_que:"Ansiedade, espasmos musculares e convulsões.",efeitos:["Sonolência intensa","Dependência","Comprometimento cognitivo","Amnésia"],como_tomar:"2 a 10mg 2–4x/dia. Usar pelo menor tempo possível.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Alprazolam",sinonimos:["frontal","xanax","frontal xr"],classe:"Ansiolítico (Benzodiazepínico)",doses:["0,25mg","0,5mg","1mg"],para_que:"Transtorno de pânico e ansiedade.",efeitos:["Sonolência","Dependência","Comprometimento de memória"],como_tomar:"0,25 a 1mg 3x/dia. Nunca parar de uma vez.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Zolpidem",sinonimos:["stilnox","ambien","zolpidem tartarato"],classe:"Hipnótico",doses:["5mg","10mg"],para_que:"Induz sono rapidamente. Insônia de curto prazo.",efeitos:["Sonolência diurna","Tontura","Amnésia"],como_tomar:"5 a 10mg ao deitar. Máximo 4 semanas.",gravidez:"contraindicado",crianca:"contraindicado",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Melatonina",sinonimos:["melatonin","circadin","sleepin"],classe:"Hormônio do Sono",doses:["1mg","3mg","5mg","10mg"],para_que:"Regula ciclo sono-vigília. Insônia e jet lag.",efeitos:["Sonolência diurna","Dor de cabeça","Tontura"],como_tomar:"1 a 10mg 30–60min antes de dormir.",gravidez:"cautela",crianca:"cautela",idoso:"seguro",amamentando:"cautela"},
+{nome:"Gabapentina",sinonimos:["neurontin","gabapentin","gabapentine"],classe:"Anticonvulsivante / Analgésico Neuropático",doses:["100mg","300mg","400mg"],para_que:"Dor neuropática, epilepsia e ansiedade.",efeitos:["Sonolência","Tontura","Inchaço","Fadiga"],como_tomar:"100 a 600mg 3x/dia. Aumentar gradualmente.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Pregabalina",sinonimos:["lyrica","pregabalin","lyrica cr"],classe:"Anticonvulsivante / Analgésico Neuropático",doses:["75mg","150mg","300mg"],para_que:"Dor neuropática, fibromialgia e ansiedade generalizada.",efeitos:["Sonolência","Tontura","Inchaço","Ganho de peso"],como_tomar:"75 a 300mg 2x/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Lamotrigina",sinonimos:["lamitor","lamictal","lamotrigine","lamitor od","lamictal xr"],classe:"Anticonvulsivante / Estabilizador de Humor",doses:["25mg","50mg","100mg","200mg"],para_que:"Epilepsia e transtorno bipolar (fase depressiva e manutenção).",efeitos:["Erupção cutânea (grave se dose aumentada rápido)","Tontura","Dor de cabeça","Náusea"],como_tomar:"Iniciar com 25mg/dia e aumentar MUITO lentamente (2 em 2 semanas). Dose de manutenção 100–200mg/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Carbamazepina",sinonimos:["tegretol","carbamazepine","tegretol cr","carbazep","neugeron"],classe:"Anticonvulsivante / Estabilizador de Humor",doses:["200mg","400mg"],para_que:"Epilepsia, neuralgia do trigêmeo e transtorno bipolar.",efeitos:["Tontura","Visão dupla","Náusea","Aplasia medular (raro)","Induz muitos metabolismos"],como_tomar:"200 a 400mg 2–3x/dia com alimentos. Aumentar gradualmente.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Topiramato",sinonimos:["topamax","topiramate","topiramato"],classe:"Anticonvulsivante",doses:["25mg","50mg","100mg"],para_que:"Epilepsia e prevenção de enxaqueca. Também reduz apetite.",efeitos:["Formigamento","Perda de apetite","Dificuldade de concentração","Cálculos renais"],como_tomar:"25 a 200mg 2x/dia. Aumentar gradualmente. Beber bastante água.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Valproato",sinonimos:["depakote","depakene","epilim","acido valproico","valproate"],classe:"Anticonvulsivante / Estabilizador de Humor",doses:["250mg","500mg"],para_que:"Epilepsia, transtorno bipolar e prevenção de enxaqueca.",efeitos:["Náusea","Ganho de peso","Tremor","Queda de cabelo","Hepatotoxicidade"],como_tomar:"250 a 500mg 2–3x/dia com alimentos.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Levetiracetam",sinonimos:["keppra","levetiracetam","levipil","levetiracetam"],classe:"Anticonvulsivante",doses:["250mg","500mg","1000mg"],para_que:"Epilepsia. Bem tolerado e com poucas interações.",efeitos:["Sonolência","Tontura","Irritabilidade","Dor de cabeça"],como_tomar:"250 a 1500mg 2x/dia. Pode ser tomado com ou sem alimentos.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Oxcarbazepina",sinonimos:["trileptal","oxcarbazepine","oxcarb"],classe:"Anticonvulsivante",doses:["150mg","300mg","600mg"],para_que:"Epilepsia. Similar à carbamazepina, porém com menos interações.",efeitos:["Tontura","Sonolência","Náusea","Hiponatremia"],como_tomar:"150 a 600mg 2x/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Fenitoína",sinonimos:["epelin","hidantal","dilantin","phenytoin","fenitoina"],classe:"Anticonvulsivante",doses:["100mg","300mg"],para_que:"Epilepsia e arritmias cardíacas. Margem terapêutica estreita.",efeitos:["Tontura","Nistagmo","Hiperplasia gengival","Osteoporose","Rash"],como_tomar:"100 a 300mg/dia em 1–2 doses. Monitorar nível sanguíneo.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+{nome:"Lítio",sinonimos:["carbolitium","lithium","carbonato de litio","quilonum","litiocar"],classe:"Estabilizador de Humor",doses:["150mg","300mg"],para_que:"Transtorno bipolar. Previne episódios maníacos e depressivos.",efeitos:["Tremor","Poliúria","Polidipsia","Ganho de peso","Toxicidade com desidratação"],como_tomar:"Dose individualizada. Monitorar lítio sérico regularmente. Manter boa hidratação.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+// ══ ANTIDEPRESSIVOS ══
+{nome:"Fluoxetina",sinonimos:["prozac","daforin","eufor","fluoxetine","verotina","nortec"],classe:"Antidepressivo (ISRS)",doses:["10mg","20mg","40mg"],para_que:"Depressão, TOC, bulimia e transtorno de pânico.",efeitos:["Náusea","Insônia","Cefaleia","Disfunção sexual","Perda de apetite"],como_tomar:"20 a 60mg/dia de manhã.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Sertralina",sinonimos:["zoloft","tolrest","sertraline","assert","serta"],classe:"Antidepressivo (ISRS)",doses:["25mg","50mg","100mg"],para_que:"Depressão, ansiedade, TOC, fobia social e pânico.",efeitos:["Náusea","Diarreia","Insônia","Disfunção sexual"],como_tomar:"50 a 200mg/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Escitalopram",sinonimos:["lexapro","reconter","cipralex","escitalopram"],classe:"Antidepressivo (ISRS)",doses:["5mg","10mg","20mg"],para_que:"Depressão e ansiedade.",efeitos:["Náusea","Insônia","Disfunção sexual"],como_tomar:"10 a 20mg/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Paroxetina",sinonimos:["paxil","aropax","pondera","paroxetine"],classe:"Antidepressivo (ISRS)",doses:["10mg","20mg","30mg","40mg"],para_que:"Depressão, ansiedade, TOC e pânico.",efeitos:["Náusea","Sonolência","Disfunção sexual","Ganho de peso","Síndrome de descontinuação"],como_tomar:"20 a 50mg/dia. Não interromper abruptamente.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Citalopram",sinonimos:["cipramil","celexa","citalopram"],classe:"Antidepressivo (ISRS)",doses:["10mg","20mg","40mg"],para_que:"Depressão e ansiedade.",efeitos:["Náusea","Boca seca","Insônia","Prolongamento QT em doses altas"],como_tomar:"20 a 40mg/dia. Dose máxima 40mg (20mg em idosos).",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Amitriptilina",sinonimos:["tryptanol","amytril","amitriptyline","elavil","laroxyl"],classe:"Antidepressivo Tricíclico",doses:["10mg","25mg","50mg"],para_que:"Depressão, dor neuropática e enxaqueca.",efeitos:["Sonolência intensa","Boca seca","Constipação","Taquicardia","Tontura ao levantar"],como_tomar:"10 a 150mg/dia, geralmente à noite.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Clomipramina",sinonimos:["anafranil","clomipramina","clomipramine"],classe:"Antidepressivo Tricíclico",doses:["10mg","25mg","75mg"],para_que:"TOC, depressão e transtorno de pânico.",efeitos:["Sonolência","Boca seca","Constipação","Ganho de peso","Taquicardia"],como_tomar:"25 a 250mg/dia, geralmente à noite.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Venlafaxina",sinonimos:["efexor","effexor","effexor xr","elafax","venlafaxine"],classe:"Antidepressivo (ISRSN)",doses:["37,5mg","75mg","150mg"],para_que:"Depressão, ansiedade e dor neuropática.",efeitos:["Náusea","Tontura","Insônia","Aumento de pressão"],como_tomar:"75 a 225mg/dia com alimentos. Monitorar pressão.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Duloxetina",sinonimos:["cymbalta","duloxetine","cymbi","duxetina"],classe:"Antidepressivo (ISRSN)",doses:["30mg","60mg"],para_que:"Depressão, ansiedade e dor neuropática.",efeitos:["Náusea","Boca seca","Sonolência","Aumento de pressão"],como_tomar:"30 a 60mg/dia. Não interromper abruptamente.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Bupropiona",sinonimos:["wellbutrin","zyban","bupropion","cession"],classe:"Antidepressivo (NDRI)",doses:["150mg","300mg"],para_que:"Depressão e cessação do tabagismo. Não causa disfunção sexual.",efeitos:["Insônia","Boca seca","Dor de cabeça","Risco de convulsão"],como_tomar:"150 a 300mg/dia. Não tomar à noite. Evitar em epilepsia.",gravidez:"cautela",crianca:"contraindicado",idoso:"cautela",amamentando:"cautela"},
+{nome:"Mirtazapina",sinonimos:["remeron","mirtazapine","mirtazapina"],classe:"Antidepressivo (NaSSA)",doses:["15mg","30mg","45mg"],para_que:"Depressão com insônia e perda de apetite.",efeitos:["Sonolência intensa","Ganho de peso","Aumento de apetite","Boca seca"],como_tomar:"15 a 45mg ao deitar.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Trazodona",sinonimos:["donaren","trazodone","desyrel"],classe:"Antidepressivo / Hipnótico",doses:["50mg","100mg","150mg"],para_que:"Depressão e insônia. Sedativo em doses baixas.",efeitos:["Sonolência","Tontura","Boca seca","Priapismo (raro)"],como_tomar:"50 a 300mg/dia. Doses baixas (50–100mg) para insônia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+// ══ ANTIPSICÓTICOS ══
+{nome:"Quetiapina",sinonimos:["seroquel","seroquel xr","quetiapine","neotiapim"],classe:"Antipsicótico Atípico",doses:["25mg","50mg","100mg","200mg","300mg"],para_que:"Esquizofrenia, transtorno bipolar e depressão.",efeitos:["Sonolência","Ganho de peso","Tontura","Boca seca","Aumento de glicose"],como_tomar:"50 a 800mg/dia. Começar com dose baixa à noite.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Risperidona",sinonimos:["risperdal","risperidone","risperdal consta","zargus"],classe:"Antipsicótico Atípico",doses:["1mg","2mg","3mg","4mg"],para_que:"Esquizofrenia, transtorno bipolar e autismo.",efeitos:["Ganho de peso","Sonolência","Rigidez muscular","Aumento de prolactina"],como_tomar:"1 a 6mg/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Olanzapina",sinonimos:["zyprexa","olanzapine","zyprexa zydis","olanzapina"],classe:"Antipsicótico Atípico",doses:["2,5mg","5mg","10mg","15mg","20mg"],para_que:"Esquizofrenia e transtorno bipolar.",efeitos:["Ganho de peso significativo","Sonolência","Aumento de glicose e colesterol"],como_tomar:"5 a 20mg/dia. Monitorar peso e glicemia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Aripiprazol",sinonimos:["abilify","aripiprazole","aripiprazol"],classe:"Antipsicótico Atípico",doses:["2mg","5mg","10mg","15mg","20mg","30mg"],para_que:"Esquizofrenia, transtorno bipolar e depressão.",efeitos:["Agitação","Insônia","Náusea","Ganho de peso moderado"],como_tomar:"10 a 30mg/dia.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Lurasidona",sinonimos:["latuda","lurasidone"],classe:"Antipsicótico Atípico",doses:["20mg","40mg","80mg","120mg"],para_que:"Esquizofrenia e depressão bipolar.",efeitos:["Náusea","Sonolência","Akathisia (inquietação)","Ganho de peso moderado"],como_tomar:"40 a 160mg/dia SEMPRE com refeição (mínimo 350 calorias). Sem alimentos, absorção cai pela metade.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Haloperidol",sinonimos:["haldol","haloperidol","serenase"],classe:"Antipsicótico Típico",doses:["1mg","2mg","5mg"],para_que:"Esquizofrenia, agitação e Síndrome de Tourette.",efeitos:["Rigidez muscular","Tremor","Discinesia tardia","Sedação","Prolongamento QT"],como_tomar:"1 a 15mg/dia em 2–3 doses.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Clozapina",sinonimos:["leponex","clozaril","clozapine","fazaclo"],classe:"Antipsicótico Atípico",doses:["25mg","100mg"],para_que:"Esquizofrenia resistente. Uso restrito por risco de agranulocitose.",efeitos:["Agranulocitose (monitoramento obrigatório)","Sonolência","Sialorreia","Convulsão","Ganho de peso"],como_tomar:"25mg/dia. Aumentar lentamente. Hemograma semanal nas primeiras 18 semanas.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"contraindicado"},
+// ══ HORMÔNIOS / TIREOIDE ══
+{nome:"Levotiroxina",sinonimos:["puran t4","synthroid","euthyrox","tiroxina","levothyroxine","levoid","eutirox","puran"],classe:"Hormônio Tireoidiano",doses:["25mcg","50mcg","75mcg","100mcg","150mcg"],para_que:"Reposição do hormônio T4 para hipotireoidismo.",efeitos:["Palpitações (superdose)","Insônia (superdose)","Perda de peso (superdose)"],como_tomar:"Em jejum, 30–60min antes do café. Nunca junto com cálcio, ferro ou antiácidos.",gravidez:"seguro",crianca:"seguro",idoso:"cautela",amamentando:"seguro"},
+{nome:"Metimazol",sinonimos:["tapazol","metimazol","methimazole"],classe:"Antitireoidiano",doses:["5mg","10mg","20mg"],para_que:"Trata hipertireoidismo.",efeitos:["Erupção cutânea","Náusea","Agranulocitose (raro)"],como_tomar:"5 a 40mg/dia em 1–3 doses.",gravidez:"contraindicado",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+// ══ CORTICOSTEROIDES ══
+{nome:"Prednisona",sinonimos:["meticorten","prednisone","predsim","deltasone"],classe:"Corticosteroide",doses:["5mg","10mg","20mg"],para_que:"Anti-inflamatório e imunossupressor potente.",efeitos:["Aumento de apetite","Retenção de líquidos","Hiperglicemia","Imunossupressão","Osteoporose"],como_tomar:"Variável. Tomar de manhã com alimentos. Nunca interromper abruptamente.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+{nome:"Dexametasona",sinonimos:["decadron","dexametasone","maxidex","dexona"],classe:"Corticosteroide",doses:["0,5mg","2mg","4mg"],para_que:"Anti-inflamatório potente. Alergias, edema cerebral e inflamações graves.",efeitos:["Hiperglicemia","Imunossupressão","Retenção de líquidos","Osteoporose"],como_tomar:"Dose variável conforme indicação. Tomar pela manhã.",gravidez:"cautela",crianca:"cautela",idoso:"cautela",amamentando:"cautela"},
+];
 
-function trocar(id) {
-  const c = campos.find(c => c.id === id);
-  if (!c) return;
-  c.med = null; c.dose = null;
-  document.getElementById('selected-'+id).style.display = 'none';
-  document.getElementById('doses-'+id).style.display = 'none';
-  const inp = document.getElementById('input-'+id);
-  inp.style.display = 'block'; inp.value = ''; inp.focus();
-}
+// ── INTERAÇÕES CONHECIDAS (base local) ────────────────
+const INTERACOES=[
+  {meds:["Varfarina","Aspirina"],nivel:"perigo",texto:"Risco alto de sangramento grave. Evitar combinação sem orientação médica."},
+  {meds:["Varfarina","Ibuprofeno"],nivel:"perigo",texto:"AINEs aumentam risco de sangramento com anticoagulantes. Evitar."},
+  {meds:["Varfarina","Diclofenaco"],nivel:"perigo",texto:"Risco aumentado de sangramento. Monitorar INR rigorosamente."},
+  {meds:["Clonazepam","Zolpidem"],nivel:"perigo",texto:"Dupla depressão do SNC. Risco de sedação excessiva e depressão respiratória."},
+  {meds:["Diazepam","Zolpidem"],nivel:"perigo",texto:"Combinação de benzodiazepínico com hipnótico aumenta sedação e risco de queda."},
+  {meds:["Tramadol","Fluoxetina"],nivel:"perigo",texto:"Risco de síndrome serotoninérgica. Evitar combinação."},
+  {meds:["Tramadol","Sertralina"],nivel:"perigo",texto:"Risco de síndrome serotoninérgica. Monitorar cuidadosamente."},
+  {meds:["Tramadol","Venlafaxina"],nivel:"perigo",texto:"Risco elevado de síndrome serotoninérgica."},
+  {meds:["Amiodarona","Varfarina"],nivel:"perigo",texto:"Amiodarona potencializa o efeito da varfarina. Monitorar INR frequentemente."},
+  {meds:["Amiodarona","Sinvastatina"],nivel:"perigo",texto:"Risco de miopatia e rabdomiólise. Evitar dose alta de estatina."},
+  {meds:["Metformina","Álcool"],nivel:"atencao",texto:"Álcool aumenta risco de acidose lática com metformina."},
+  {meds:["Ibuprofeno","Captopril"],nivel:"atencao",texto:"AINEs reduzem efeito anti-hipertensivo dos IECAs."},
+  {meds:["Ibuprofeno","Losartana"],nivel:"atencao",texto:"AINEs podem reduzir efeito da losartana e aumentar pressão."},
+  {meds:["Aspirina","Ibuprofeno"],nivel:"atencao",texto:"Ibuprofeno pode antagonizar o efeito antiagregante da aspirina em baixas doses."},
+  {meds:["Furosemida","Ibuprofeno"],nivel:"atencao",texto:"AINEs reduzem efeito diurético e podem prejudicar função renal."},
+  {meds:["Levotiroxina","Omeprazol"],nivel:"atencao",texto:"IBPs podem reduzir absorção da levotiroxina. Tomar com intervalo de 4h."},
+  {meds:["Metformina","Furosemida"],nivel:"atencao",texto:"Diuréticos podem alterar controle glicêmico. Monitorar glicemia."},
+  {meds:["Clonazepam","Alprazolam"],nivel:"perigo",texto:"Duplo benzodiazepínico: risco elevado de sedação, depressão respiratória e dependência."},
+  {meds:["Quetiapina","Zolpidem"],nivel:"atencao",texto:"Risco de sedação excessiva. Evitar dirigir ou operar máquinas."},
+  {meds:["Haloperidol","Amiodarona"],nivel:"perigo",texto:"Ambos prolongam o QT. Risco de arritmia grave (Torsades de Pointes)."},
+  {meds:["Quetiapina","Amiodarona"],nivel:"perigo",texto:"Prolongamento aditivo do QT. Risco de arritmia grave."},
+  {meds:["Claritromicina","Sinvastatina"],nivel:"perigo",texto:"Claritromicina inibe metabolismo da sinvastatina. Risco de miopatia grave."},
+  {meds:["Ciprofloxacino","Varfarina"],nivel:"atencao",texto:"Ciprofloxacino pode aumentar efeito anticoagulante. Monitorar INR."},
+  {meds:["Metronidazol","Varfarina"],nivel:"perigo",texto:"Metronidazol potencializa anticoagulação. Risco de sangramento."},
+  {meds:["Fluoxetina","Tramadol"],nivel:"perigo",texto:"Risco de síndrome serotoninérgica e convulsões."},
+  {meds:["Carbamazepina","Varfarina"],nivel:"perigo",texto:"Carbamazepina reduz efeito anticoagulante por indução enzimática."},
+  {meds:["Lítio","Ibuprofeno"],nivel:"perigo",texto:"AINEs aumentam nível sérico do lítio. Risco de toxicidade."},
+  {meds:["Lítio","Diclofenaco"],nivel:"perigo",texto:"Diclofenaco eleva nível do lítio. Monitorar lítio sérico."},
+  {meds:["Lítio","Captopril"],nivel:"atencao",texto:"IECAs aumentam nível sérico do lítio. Monitorar."},
+];
 
-// ═══════════════════════════════════════════════════
-// OPÇÕES E PERFIL
-// ═══════════════════════════════════════════════════
-function toggleOption(el) {
-  el.classList.toggle('checked');
-  el.querySelector('.check-box').textContent = el.classList.contains('checked') ? '✓' : '';
+// ── ESTADO ─────────────────────────────────────────────
+let medCount = 0;
+let perfilAtual = 'adulto';
+
+// ── PÁGINAS ────────────────────────────────────────────
+function setPage(page, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  btn.classList.add('active');
 }
 
 function setPerfil(btn, perfil) {
@@ -1157,171 +425,325 @@ function setPerfil(btn, perfil) {
   perfilAtual = perfil;
 }
 
-// ═══════════════════════════════════════════════════
-// ANALISAR
-// ═══════════════════════════════════════════════════
-function animateSteps() {
-  const steps = ['step1','step2','step3','step4'];
-  let i = 0;
-  stepTimer = setInterval(() => {
-    steps.forEach(s => document.getElementById(s).classList.remove('active'));
-    if (i < steps.length) { document.getElementById(steps[i]).classList.add('active'); i++; }
-  }, 600);
+function toggleOption(label) {
+  label.classList.toggle('checked');
+  const cb = label.querySelector('input');
+  cb.checked = !cb.checked;
+  const box = label.querySelector('.check-box');
+  box.textContent = cb.checked ? '✓' : '';
+  box.style.color = cb.checked ? '#fff' : 'transparent';
 }
 
-function analisar() {
-  const sel = campos.filter(c => c.med !== null);
-  if (sel.length < 1) { alert('Por favor, selecione pelo menos um medicamento.'); return; }
-  const opcoes = [];
-  document.querySelectorAll('.option-check.checked .option-label').forEach(el => opcoes.push(el.textContent.trim()));
-  document.getElementById('form-area').style.display = 'none';
-  document.getElementById('loading').classList.add('visible');
-  animateSteps();
-  setTimeout(() => {
-    clearInterval(stepTimer);
-    document.getElementById('loading').classList.remove('visible');
-    renderResult(sel, opcoes);
-  }, 2400);
+// ── CAMPOS DE MEDICAMENTO ──────────────────────────────
+function adicionarCampo() {
+  medCount++;
+  const idx = medCount;
+  const container = document.getElementById('meds-container');
+  const card = document.createElement('div');
+  card.className = 'med-card fadeUp';
+  card.id = 'med-card-' + idx;
+  card.innerHTML = `
+    <div class="med-card-label">💊 MEDICAMENTO ${idx}</div>
+    <div class="input-wrap">
+      <input class="med-input" id="med-input-${idx}"
+             placeholder="Digite o nome do remédio..."
+             autocomplete="off"
+             oninput="buscarMed(${idx})"
+             onblur="setTimeout(()=>fecharAC(${idx}),200)">
+      <div class="autocomplete" id="ac-${idx}"></div>
+    </div>
+    <div class="med-selected" id="sel-${idx}" style="display:none">
+      <div style="flex:1">
+        <div class="sel-name" id="sel-name-${idx}"></div>
+        <div class="sel-dose" id="sel-dose-${idx}"></div>
+      </div>
+      <button class="btn-trocar" onclick="trocarMed(${idx})">Trocar</button>
+    </div>
+    <div class="doses-wrap" id="doses-${idx}" style="display:none">
+      <div class="doses-label">Selecione a dose (opcional):</div>
+      <div class="doses-grid" id="doses-grid-${idx}"></div>
+    </div>
+    ${idx > 2 ? `<div style="text-align:right;margin-top:8px"><button onclick="removerCampo(${idx})" style="background:none;border:none;color:var(--muted);font-size:.78rem;cursor:pointer;padding:4px 8px">✕ Remover</button></div>` : ''}
+  `;
+  container.appendChild(card);
 }
 
-// ═══════════════════════════════════════════════════
-// RENDERIZAR RESULTADO
-// ═══════════════════════════════════════════════════
-function renderResult(sel, opcoes) {
-  const nomes = sel.map(c => c.med.nome);
-  const achadas = [];
-  for (let i = 0; i < nomes.length; i++) {
-    for (let j = i+1; j < nomes.length; j++) {
-      const a = nomes[i], b = nomes[j];
-      const inter = INTERACOES.find(x => x.meds.includes(a) && x.meds.includes(b));
-      if (inter) achadas.push({...inter, par:[a,b]});
+function removerCampo(idx) {
+  const card = document.getElementById('med-card-' + idx);
+  if (card) card.remove();
+}
+
+// ── AUTOCOMPLETE ───────────────────────────────────────
+function buscarMed(idx) {
+  const input = document.getElementById('med-input-' + idx);
+  const ac = document.getElementById('ac-' + idx);
+  const query = input.value.trim();
+  if (query.length < 2) { ac.style.display = 'none'; return; }
+  const results = MEDS
+    .map(m => ({ med: m, score: scoreMatch(query, m) }))
+    .filter(r => r.score < Infinity)
+    .sort((a, b) => a.score - b.score)
+    .slice(0, 6);
+  if (!results.length) { ac.style.display = 'none'; return; }
+  ac.innerHTML = results.map(r => {
+    const syn = matchedSynonym(query, r.med);
+    const hint = syn ? `<span class="ac-match-hint">${syn}</span>` : '';
+    return `<div class="ac-item" onmousedown="selecionarMed(${idx},'${r.med.nome.replace(/'/g,"\\'")}')">
+      💊 <span><strong>${r.med.nome}</strong><span class="ac-class">${r.med.classe}</span></span>${hint}
+    </div>`;
+  }).join('');
+  ac.style.display = 'block';
+}
+
+function fecharAC(idx) {
+  const ac = document.getElementById('ac-' + idx);
+  if (ac) ac.style.display = 'none';
+}
+
+function selecionarMed(idx, nomeMed) {
+  const med = MEDS.find(m => m.nome === nomeMed);
+  if (!med) return;
+  const input = document.getElementById('med-input-' + idx);
+  const ac = document.getElementById('ac-' + idx);
+  const selEl = document.getElementById('sel-' + idx);
+  const dosesWrap = document.getElementById('doses-' + idx);
+  const dosesGrid = document.getElementById('doses-grid-' + idx);
+  input.style.display = 'none';
+  ac.style.display = 'none';
+  selEl.style.display = 'flex';
+  selEl.dataset.medNome = med.nome;
+  selEl.dataset.doseAtual = '';
+  document.getElementById('sel-name-' + idx).textContent = med.nome;
+  document.getElementById('sel-dose-' + idx).textContent = med.classe;
+  if (med.doses && med.doses.length) {
+    dosesGrid.innerHTML = med.doses.map(d =>
+      `<button class="dose-btn" onclick="selecionarDose(${idx},this,'${d}')">${d}</button>`
+    ).join('');
+    dosesWrap.style.display = 'block';
+  }
+}
+
+function selecionarDose(idx, btn, dose) {
+  document.querySelectorAll(`#doses-grid-${idx} .dose-btn`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const selEl = document.getElementById('sel-' + idx);
+  selEl.dataset.doseAtual = dose;
+  const med = MEDS.find(m => m.nome === selEl.dataset.medNome);
+  document.getElementById('sel-dose-' + idx).textContent = dose + (med ? ' · ' + med.classe : '');
+}
+
+function trocarMed(idx) {
+  const input = document.getElementById('med-input-' + idx);
+  const selEl = document.getElementById('sel-' + idx);
+  const dosesWrap = document.getElementById('doses-' + idx);
+  input.style.display = '';
+  input.value = '';
+  input.focus();
+  selEl.style.display = 'none';
+  dosesWrap.style.display = 'none';
+}
+
+// ── VERIFICAÇÃO LOCAL ──────────────────────────────────
+function checarInteracoesLocais(meds) {
+  const achados = [];
+  for (let i = 0; i < meds.length; i++) {
+    for (let j = i + 1; j < meds.length; j++) {
+      for (const inter of INTERACOES) {
+        const nomes = inter.meds.map(n => n.toLowerCase());
+        if (nomes.includes(meds[i].nome.toLowerCase()) && nomes.includes(meds[j].nome.toLowerCase())) {
+          achados.push({ par: `${meds[i].nome} + ${meds[j].nome}`, nivel: inter.nivel, texto: inter.texto });
+        }
+      }
     }
   }
+  return achados;
+}
 
-  let nivel = 'seguro';
-  if (achadas.some(a => a.grav === 'grave')) nivel = 'perigo';
-  else if (achadas.some(a => a.grav === 'moderada')) nivel = 'atencao';
+// ── ANÁLISE PRINCIPAL ──────────────────────────────────
+function getMedsSelecionados() {
+  const meds = [];
+  document.querySelectorAll('[id^="sel-"]').forEach(el => {
+    if (el.style.display !== 'none' && el.dataset.medNome) {
+      const med = MEDS.find(m => m.nome === el.dataset.medNome);
+      if (med) meds.push({ ...med, doseEscolhida: el.dataset.doseAtual || null });
+    }
+  });
+  return meds;
+}
 
-  const bannerMap = {
-    seguro: {cls:'safe', icon:'✅', titulo:'Sem interações graves identificadas'},
-    atencao:{cls:'warning',icon:'⚠️',titulo:'Atenção: existem interações a considerar'},
-    perigo: {cls:'danger',icon:'🚨',titulo:'Alerta: interações potencialmente graves'}
+function getOpcoesAtivas() {
+  return [...document.querySelectorAll('.option-check.checked .option-label')].map(el => el.textContent.trim());
+}
+
+async function analisar() {
+  const meds = getMedsSelecionados();
+  if (meds.length < 1) { alert('Adicione pelo menos 1 medicamento.'); return; }
+
+  const formArea = document.getElementById('form-area');
+  const loading = document.getElementById('loading');
+  const resultWrap = document.getElementById('result-wrap');
+
+  formArea.style.display = 'none';
+  loading.classList.add('visible');
+  resultWrap.classList.remove('visible');
+
+  const steps = ['step1','step2','step3','step4'];
+  let si = 0;
+  document.getElementById(steps[0]).classList.add('active');
+  const stepTimer = setInterval(() => {
+    document.getElementById(steps[si])?.classList.remove('active');
+    si = (si + 1) % steps.length;
+    document.getElementById(steps[si])?.classList.add('active');
+  }, 950);
+
+  const opcoes = getOpcoesAtivas();
+  const medsTexto = meds.map(m => `- ${m.nome}${m.doseEscolhida ? ' ' + m.doseEscolhida : ''} (${m.classe})`).join('\n');
+  const dadosRef = meds.map(m =>
+    `**${m.nome}**: Para: ${m.para_que}. Efeitos: ${m.efeitos.join(', ')}. Como tomar: ${m.como_tomar}. ` +
+    `Gravidez:${m.gravidez}, Criança:${m.crianca}, Idoso:${m.idoso}, Amamentando:${m.amamentando}`
+  ).join('\n');
+
+  const prompt = `Você é um farmacêutico clínico especialista brasileiro. Analise estes medicamentos para paciente (${perfilAtual}):\n\n${medsTexto}\n\nVerificar: ${opcoes.join(', ')}.\n\nReferência:\n${dadosRef}\n\nResponda SOMENTE em JSON válido (sem markdown, sem blocos de código) com exatamente este formato:\n{"risco":"seguro","resumo":"frase curta","interacoes":"HTML detalhado","indicacoes":"HTML","como_tomar":"HTML","perfil":"HTML"}\n\nrisco deve ser: seguro | atencao | perigo`;
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    clearInterval(stepTimer);
+    const data = await resp.json();
+    const rawText = (data.content || []).map(c => c.text || '').join('').replace(/```json|```/g,'').trim();
+    let result;
+    try { result = JSON.parse(rawText); }
+    catch { result = { risco:'atencao', resumo:'Análise concluída.', interacoes: rawText, indicacoes:'', como_tomar:'', perfil:'' }; }
+    renderResultado(result);
+  } catch {
+    clearInterval(stepTimer);
+    renderResultadoOffline(meds);
+  }
+
+  loading.classList.remove('visible');
+  resultWrap.classList.add('visible');
+}
+
+// ── RENDERIZAÇÃO ───────────────────────────────────────
+function renderResultado(result) {
+  const map = {
+    seguro: { cls:'safe', icon:'✅', titulo:'Combinação Segura' },
+    atencao: { cls:'warning', icon:'⚠️', titulo:'Atenção Necessária' },
+    perigo: { cls:'danger', icon:'🚨', titulo:'Interação Importante' }
   };
-  const bm = bannerMap[nivel];
-  const resumo = nivel === 'seguro'
-    ? 'Não encontramos interações problemáticas entre ' + nomes.join(', ') + '.'
-    : achadas.length + ' interação(ões) identificada(s). Leia as recomendações abaixo.';
-
+  const r = map[result.risco] || map.atencao;
   document.getElementById('risk-banner').innerHTML = `
-    <div class="risk-banner ${bm.cls}">
-      <div class="risk-icon">${bm.icon}</div>
-      <div class="risk-text"><h3>${bm.titulo}</h3><p>${resumo}</p></div>
+    <div class="risk-banner ${r.cls}">
+      <div class="risk-icon">${r.icon}</div>
+      <div class="risk-text"><h3>${r.titulo}</h3><p>${result.resumo || ''}</p></div>
+    </div>`;
+  const secs = [
+    { icon:'⚡', cls:'red', title:'Interações', body: result.interacoes },
+    { icon:'📖', cls:'green', title:'Para que servem', body: result.indicacoes },
+    { icon:'🕐', cls:'yellow', title:'Como tomar', body: result.como_tomar },
+    { icon:'👤', cls:'blue', title:'Segurança — ' + perfilAtual, body: result.perfil }
+  ].filter(s => s.body);
+  document.getElementById('result-sections').innerHTML = secs.map((s, i) => `
+    <div class="result-section ${i===0?'open':''}">
+      <div class="result-section-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="section-icon ${s.cls}">${s.icon}</div>
+        <span class="section-title">${s.title}</span>
+        <span class="section-arrow">▼</span>
+      </div>
+      <div class="result-section-body"><div class="result-content">${s.body}</div></div>
+    </div>`).join('');
+}
+
+function renderResultadoOffline(meds) {
+  const interacoes = checarInteracoesLocais(meds);
+  const nivelGeral = interacoes.some(i => i.nivel==='perigo') ? 'perigo'
+    : interacoes.some(i => i.nivel==='atencao') ? 'atencao' : 'seguro';
+  const map = {
+    seguro:{ cls:'safe', icon:'✅', titulo:'Sem interações identificadas', resumo:'Nenhuma interação crítica encontrada na base local.' },
+    atencao:{ cls:'warning', icon:'⚠️', titulo:'Atenção Necessária', resumo:'Foram encontradas interações que merecem atenção.' },
+    perigo:{ cls:'danger', icon:'🚨', titulo:'Interação Importante', resumo:'Interações potencialmente graves identificadas. Consulte um médico ou farmacêutico.' }
+  };
+  const r = map[nivelGeral];
+  document.getElementById('risk-banner').innerHTML = `
+    <div class="risk-banner ${r.cls}">
+      <div class="risk-icon">${r.icon}</div>
+      <div class="risk-text"><h3>${r.titulo}</h3><p>${r.resumo}</p></div>
     </div>`;
 
-  const gravMap = {leve:'green',moderada:'yellow',grave:'red'};
-  let sections = '';
+  let interHtml = interacoes.length
+    ? interacoes.map(i => {
+        const cor = i.nivel==='perigo'?'red':i.nivel==='atencao'?'yellow':'green';
+        return `<p><span class="tag-pill ${cor}">${i.nivel.toUpperCase()}</span> <strong>${i.par}</strong><br>${i.texto}</p>`;
+      }).join('')
+    : '<p>Nenhuma interação identificada na base de dados local.</p>';
 
-  if (opcoes.some(o => o.includes('Interações')) || opcoes.length === 0) {
-    let content = '';
-    if (achadas.length === 0) {
-      content = '<p>Nenhuma interação relevante identificada entre os medicamentos informados. Sempre confirme com seu médico ou farmacêutico.</p>';
-    } else {
-      achadas.sort((a,b) => ['grave','moderada','leve'].indexOf(a.grav) - ['grave','moderada','leve'].indexOf(b.grav));
-      achadas.forEach(a => {
-        content += `<h4>${a.par[0]} + ${a.par[1]} <span class="tag-pill ${gravMap[a.grav]}">${a.grav}</span></h4><p>${a.desc}</p><p><strong>Recomendação:</strong> ${a.rec}</p>`;
-      });
-    }
-    sections += makeSection('⚡','red','Interações entre os Medicamentos', content, true);
-  }
+  let sections = `<div class="result-section open">
+    <div class="result-section-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="section-icon red">⚡</div><span class="section-title">Interações</span><span class="section-arrow">▼</span>
+    </div>
+    <div class="result-section-body"><div class="result-content">${interHtml}</div></div>
+  </div>`;
 
-  if (opcoes.some(o => o.includes('serve')) || opcoes.length === 0) {
-    let content = '';
-    sel.forEach(c => {
-      content += `<h4>${c.med.nome} ${c.dose} <span class="tag-pill blue">${c.med.classe}</span></h4>
-        <p>${c.med.para_que}</p><p><strong>Efeitos colaterais comuns:</strong> ${c.med.efeitos.join(', ')}.</p>`;
-    });
-    sections += makeSection('📖','blue','Para que serve cada remédio', content);
-  }
-
-  if (opcoes.some(o => o.includes('tomar') || o.includes('Horário')) || opcoes.length === 0) {
-    let content = '';
-    sel.forEach(c => { content += `<h4>🕐 ${c.med.nome} ${c.dose}</h4><p>${c.med.como_tomar}</p>`; });
-    sections += makeSection('🕐','yellow','Como e quando tomar', content);
-  }
-
-  if (opcoes.some(o => o.includes('perfil') || o.includes('Segurança')) || opcoes.length === 0) {
-    const statusMap = {
-      seguro:{cor:'green',icone:'✅',label:'Seguro'},
-      cautela:{cor:'yellow',icone:'⚠️',label:'Usar com cautela'},
-      contraindicado:{cor:'red',icone:'🚫',label:'Contraindicado'}
-    };
-    const perfilLabel = {adulto:'Adulto',idoso:'Idoso (60+)',gestante:'Gestante',crianca:'Criança',amamentando:'Amamentando','nao informado':'Não informado'};
-    let content = '';
-    sel.forEach(c => {
-      const m = c.med;
-      const pk = perfilAtual === 'idoso' ? 'idoso'
-        : perfilAtual === 'gestante' ? 'gravidez'
-        : perfilAtual === 'crianca' ? 'crianca'
-        : perfilAtual === 'amamentando' ? 'amamentando'
-        : 'idoso';
-      const status = m[pk] || 'cautela';
-      const s = statusMap[status] || statusMap['cautela'];
-      const obs = {seguro:'Geralmente seguro para este perfil nas doses habituais.',cautela:'Usar com cautela. Monitoramento médico recomendado.',contraindicado:'Contraindicado para este perfil. Consulte o médico antes de usar.'}[status];
-      content += `<h4>${s.icone} ${m.nome} ${c.dose} <span class="tag-pill ${s.cor}">${s.label}</span></h4><p>${obs}</p>`;
-    });
-    sections += makeSection('👤','green',`Segurança para: ${perfilLabel[perfilAtual]||perfilAtual}`, content);
-  }
+  sections += meds.map(m => {
+    const perfMap = { seguro:'<span class="tag-pill green">✅ SEGURO</span>', cautela:'<span class="tag-pill yellow">⚠️ CAUTELA</span>', contraindicado:'<span class="tag-pill red">🚫 CONTRAINDICADO</span>' };
+    const perfilInfo = m[perfilAtual] ? perfMap[m[perfilAtual]] || '' : '';
+    return `<div class="result-section">
+      <div class="result-section-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="section-icon green">📖</div><span class="section-title">${m.nome}${m.doseEscolhida?' — '+m.doseEscolhida:''}</span><span class="section-arrow">▼</span>
+      </div>
+      <div class="result-section-body"><div class="result-content">
+        <h4>Para que serve</h4><p>${m.para_que}</p>
+        <h4>Como tomar</h4><p>${m.como_tomar}</p>
+        <h4>Efeitos adversos comuns</h4><p>${m.efeitos.join(' · ')}</p>
+        <h4>Perfil: ${perfilAtual}</h4><p>${perfilInfo}</p>
+      </div></div>
+    </div>`;
+  }).join('');
 
   document.getElementById('result-sections').innerHTML = sections;
-  document.querySelectorAll('.result-section-header').forEach(h => {
-    h.addEventListener('click', () => h.closest('.result-section').classList.toggle('open'));
-  });
-  document.getElementById('result-wrap').classList.add('visible');
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function makeSection(icon, color, title, content, open=false) {
-  return `<div class="result-section ${open?'open':''}">
-    <div class="result-section-header">
-      <div class="section-icon ${color}">${icon}</div>
-      <span class="section-title">${title}</span>
-      <span class="section-arrow">▼</span>
-    </div>
-    <div class="result-section-body"><div class="result-content">${content}</div></div>
-  </div>`;
-}
-
+// ── NOVA CONSULTA ──────────────────────────────────────
 function novaConsulta() {
+  document.getElementById('form-area').style.display = '';
   document.getElementById('result-wrap').classList.remove('visible');
-  document.getElementById('form-area').style.display = 'block';
   document.getElementById('meds-container').innerHTML = '';
-  campos = []; campoCount = 0;
-  adicionarCampo(); // ← CORREÇÃO: chama diretamente, não via DOMContentLoaded
+  medCount = 0;
   adicionarCampo();
-  window.scrollTo({top:0,behavior:'smooth'});
+  adicionarCampo();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function setPage(page, btn) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('page-'+page).classList.add('active');
-  btn.classList.add('active');
-}
-
+// ── ANÚNCIO ────────────────────────────────────────────
 function abrirAd() {
-  document.getElementById('ad-modal').classList.add('open');
-  let n = 5;
-  const t = document.getElementById('ad-timer'), btn = document.getElementById('btn-fechar-ad');
-  t.textContent = n; btn.disabled = true; btn.textContent = 'AGUARDE...';
+  const modal = document.getElementById('ad-modal');
+  modal.classList.add('open');
+  let t = 5;
+  const timerEl = document.getElementById('ad-timer');
+  const btn = document.getElementById('btn-fechar-ad');
+  btn.disabled = true;
+  btn.textContent = 'AGUARDE...';
   const iv = setInterval(() => {
-    n--; t.textContent = n;
-    if (n <= 0) { clearInterval(iv); btn.disabled = false; btn.textContent = '✅ OBRIGADO! FECHAR'; }
+    t--;
+    timerEl.textContent = t;
+    if (t <= 0) {
+      clearInterval(iv);
+      btn.disabled = false;
+      btn.textContent = 'FECHAR E CONTINUAR';
+    }
   }, 1000);
 }
 function fecharAd() { document.getElementById('ad-modal').classList.remove('open'); }
-function abrirDoacao() { alert('Em breve: página de contribuição voluntária.\nObrigado por querer apoiar! ❤️'); }
+function abrirDoacao() { window.open('https://pix.example.com','_blank'); }
 
-// Inicializa os campos — chamada direta, sem DOMContentLoaded pois o script está no final do body
+// ── INICIALIZAÇÃO ──────────────────────────────────────
 adicionarCampo();
 adicionarCampo();
 </script>
